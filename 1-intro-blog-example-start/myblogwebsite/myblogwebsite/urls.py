@@ -20,4 +20,9 @@ from django.urls import path
 
 urlpatterns = [
     path("admin/", admin.site.urls),
+
+
+
+    # this is going to be where you map your views in your apps (more on this later)
+    # in the application.
 ]
