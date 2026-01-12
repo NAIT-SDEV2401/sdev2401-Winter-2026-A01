@@ -37,6 +37,10 @@ INSTALLED_APPS = [
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
+    # we need to add our app
+    # to our project so that our django
+    # project knows to include it.
+    "blog",
 ]
 
 MIDDLEWARE = [
