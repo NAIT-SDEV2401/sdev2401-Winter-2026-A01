@@ -24,3 +24,7 @@ def post_list(request):
         # templates folder that will be
         # aggregated on load
     )
+
+
+
+
