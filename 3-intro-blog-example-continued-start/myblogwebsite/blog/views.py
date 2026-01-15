@@ -10,3 +10,14 @@ from django.shortcuts import render
 
 def post_list(request):
     # request we can see more of this later
+    # what the user sent we have access to
+    # a whole bunch here.
+
+    # here in this part of the view we will
+    # interact with our ORM.
+
+    # return a response to this request
+    return render(
+        request,
+        'blog/post_list.html'
+    )
