@@ -20,4 +20,7 @@ def post_list(request):
     return render(
         request,
         'blog/post_list.html'
+        # the above is looking in the
+        # templates folder that will be
+        # aggregated on load
     )
