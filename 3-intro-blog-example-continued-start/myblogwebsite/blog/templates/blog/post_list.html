@@ -11,15 +11,23 @@
         <h1 class="text-3xl font-bold underline">
             Hello, I'm using a backend framework!
         </h1>
-        <!-- Added html. -->
-        <div class="bg-white shadow rounded-xl p-4 mb-4">
-            <p class="text-lg mb-2">Just finished building my portfolio site!</p>
-            <span class="text-sm text-gray-500">May 8, 2025</span>
-        </div>
         <!-- Django template tag our first one
         how we're going to render data on the
         frontend. -->
-        <p>{% debug %}</p>
+        <!-- <p>{% debug %}</p> -->
+        <!-- We're going to loop through the
+        posts and render the data  -->
+        {% for post in posts %}
+        <!-- Added html. -->
+        <div class="bg-white shadow rounded-xl p-4 mb-4">
+            <p class="text-lg mb-2">
+                Just finished building my portfolio site!
+            </p>
+            <span class="text-sm text-gray-500">
+                May 8, 2025
+            </span>
+        </div>
+        {% endfor %}
     </div>
   </body>
 </html>
