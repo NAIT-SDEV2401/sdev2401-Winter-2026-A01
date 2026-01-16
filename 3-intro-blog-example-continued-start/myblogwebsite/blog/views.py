@@ -17,6 +17,12 @@ def post_list(request):
     # let's get the posts
     # below is like (select * from post)
     posts = Post.objects.all()
+    # I want you to put a breakpoint here
+    # breakpoint()
+    # handy breakpoint commands
+    # l or ll show where you are
+    # c continue
+    # n next
 
     # return a response to this request
     return render(
