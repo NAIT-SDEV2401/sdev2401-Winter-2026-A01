@@ -16,6 +16,14 @@ def post_list(request):
     # here in this part of the view we will
     # interact with our ORM.
 
+    # I want you to put a breakpoint here
+    breakpoint()
+    # handy breakpoint commands
+    # l or ll show where you are
+    # c continue
+    # n next
+
+
     # return a response to this request
     return render(
         request,
