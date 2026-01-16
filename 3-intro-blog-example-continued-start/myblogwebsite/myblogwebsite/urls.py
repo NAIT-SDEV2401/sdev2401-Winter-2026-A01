@@ -22,6 +22,8 @@ from django.urls import path, include
 urlpatterns = [
     path("admin/", admin.site.urls),
     path("", include("blog.urls")),
+    # an empty path here as the first arg
+    # is the path for http://localhost:8000/
 ]
 
 
