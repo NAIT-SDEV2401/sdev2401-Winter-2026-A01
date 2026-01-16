@@ -2,6 +2,10 @@ from django.conf import settings
 from django.db import models
 from django.utils import timezone
 
+# this has two roles:
+# 1. acts as the database schema for the table
+# 2. Post.objects.blah is going be how we
+#   query data from our database layer
 
 class Post(models.Model):
     author = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
