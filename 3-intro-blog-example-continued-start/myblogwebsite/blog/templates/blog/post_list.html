@@ -18,13 +18,14 @@
         <!-- We're going to loop through the
         posts and render the data  -->
         {% for post in posts %}
-        <!-- Added html. -->
+        <!-- Each post is an instance of a post -->
         <div class="bg-white shadow rounded-xl p-4 mb-4">
             <p class="text-lg mb-2">
-                Just finished building my portfolio site!
+                <!-- display the title of the post using curly braces to display -->
+                {{ post.title }}
             </p>
             <span class="text-sm text-gray-500">
-                May 8, 2025
+                {{ post.created_date }}
             </span>
         </div>
         {% endfor %}
