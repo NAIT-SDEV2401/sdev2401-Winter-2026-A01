@@ -1,4 +1,13 @@
+import os
+import django
+os.environ.setdefault("DJANGO_SETTINGS_MODULE", "templateintro.settings")
+django.setup()
+
+print("Django environment set up successfully.")
+
 from django.template import Template, Context
+
+
 
 # you have some data in dictionary
 data = {
@@ -25,8 +34,8 @@ second_context = Context({
 
 
 # just render it with the new item here.
-template.render(context)
+print(template.render(context))
 
 
 # render the second
-template.render(second_context)
+print(template.render(second_context))
