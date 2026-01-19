@@ -4,10 +4,10 @@ os.environ.setdefault("DJANGO_SETTINGS_MODULE", "templateintro.settings")
 django.setup()
 
 print("Django environment set up successfully.")
+# everything above this line is needed to create a runnable django file.
+
 
 from django.template import Template, Context
-
-
 
 # you have some data in dictionary
 data = {

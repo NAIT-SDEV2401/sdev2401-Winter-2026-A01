@@ -4,7 +4,7 @@ os.environ.setdefault("DJANGO_SETTINGS_MODULE", "templateintro.settings")
 django.setup()
 
 print("Django environment set up successfully.")
-
+# everything above this line is needed to create a runnable django file.
 
 from django.template import Template, Context
 
@@ -32,9 +32,10 @@ Books:
 template = Template("""
 Books:
 {% for book in items %}
-- {{ book.title }} ({{ book.rating }})
+- {{ book.title }} ({{ book.rating }}) {% if book.rating >= 4 %}Great book!{% else %}It was okay{% endif %}
 {% endfor %}
 """)
+# Just a note here in the above make sure your template tags have space around the items.
 # 2. create a context
 context = Context(data)
 # 3. render it.
