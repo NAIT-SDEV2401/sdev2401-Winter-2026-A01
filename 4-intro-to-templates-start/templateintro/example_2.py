@@ -32,7 +32,7 @@ Books:
 template = Template("""
 Books:
 {% for book in items %}
-- {{ book.title | title }} ({{ book.rating }}) {% if book.rating >= 4 %}Great book!{% else %}It was okay{% endif %}
+- {{ book.title | title }}, (rated {{ book.rating }}) {% if book.rating >= 4 %}Great book!{% else %}It was okay{% endif %}
 {% endfor %}
 """)
 # Just a note here in the above make sure your template tags have space around the items.
