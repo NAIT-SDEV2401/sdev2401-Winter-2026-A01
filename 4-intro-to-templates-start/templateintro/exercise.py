@@ -53,7 +53,7 @@ the sentiment for this message is {{ sentiment }}
 you should be
 {% if sentiment == "positive" %}happy{% elif sentiment == "negative" %}worried{% else %}not worried at all{% endif %}
 based on the sentiment
-""")
+""") # this is going to not be a string but an html file.
 '''
 The 8 ball says:
 YOUR_RESPONSE_HERE
