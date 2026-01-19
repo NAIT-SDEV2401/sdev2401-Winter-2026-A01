@@ -13,11 +13,30 @@ import requests
 # use requests (install with pip)
 # 1. hit the endpoint https://www.eightballapi.com/api to get a response.
 message = requests.get("https://www.eightballapi.com/api").json() # this just fetches and parses json
-breakpoint()
+
 
 # 2. use the endpoint https://www.eightballapi.com/api/categories to get the categories
 #    and categorize the items.
+categories = requests.get("https://www.eightballapi.com/api/categories").json() # this just fetches and parses json
+
+reading = message["reading"]
+
+sentiment = ""
+# I'm going to loop through the categories
+for category in categories.keys():
+    # check to see if my reading is positive, neutral or negative
+    if reading in categories[category]:
+        # save that as the sentiment
+        sentiment = category
+
+
 # 3. format the data
+data = {
+    "response": reading,
+    "sentiment": sentiment
+}
+
+breakpoint()
 '''
 {
     response: "",
