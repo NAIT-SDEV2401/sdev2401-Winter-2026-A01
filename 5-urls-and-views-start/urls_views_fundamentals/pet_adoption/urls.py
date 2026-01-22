@@ -15,8 +15,9 @@ from .views import home_page
 # which will make this connection
 urlpatterns = [
     path(
-        "",
-        home_page,
-        name="home_page"
+        "", # is the url (here /) like default
+        home_page, # this is the view
+        name="home_page" # we're going to use
+        # this in the templates later on.
     )
 ]
