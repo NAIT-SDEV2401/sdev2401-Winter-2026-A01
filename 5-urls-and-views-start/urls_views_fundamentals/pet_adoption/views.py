@@ -37,7 +37,11 @@ def home_page(request):
         "pet_adoption/home_page.html",
         # the above is the template
         # note don't include the "templates"
-        { "name": name }
+        {
+            "name": name,
+            "pet_types": PET_TYPES
+
+        }
         # this line above passes the data
         # as context to the template
     )
