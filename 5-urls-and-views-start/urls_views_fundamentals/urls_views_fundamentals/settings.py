@@ -51,6 +51,7 @@ MIDDLEWARE = [
 
 ROOT_URLCONF = "urls_views_fundamentals.urls"
 
+# this is the settings that's going look in the folder and render the appropriate templates.
 TEMPLATES = [
     {
         "BACKEND": "django.template.backends.django.DjangoTemplates",
