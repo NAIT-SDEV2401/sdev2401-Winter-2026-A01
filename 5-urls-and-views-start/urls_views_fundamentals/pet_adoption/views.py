@@ -40,8 +40,15 @@ def home_page(request):
         {
             "name": name,
             "pet_types": PET_TYPES
-
         }
         # this line above passes the data
         # as context to the template
     )
+
+
+
+
+
+
+
+
