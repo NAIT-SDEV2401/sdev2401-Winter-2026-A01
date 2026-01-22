@@ -10,3 +10,13 @@ from .views import home_page
 # the . is looking in the same folder
 # for a file called views and a function
 # called home page inside.
+
+# we're going to make a list of paths
+# which will make this connection
+urlpatterns = [
+    path(
+        "",
+        home_page,
+        name="home_page"
+    )
+]
