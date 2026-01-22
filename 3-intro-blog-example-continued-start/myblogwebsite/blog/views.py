@@ -28,7 +28,10 @@ def post_list(request):
     return render(
         request,
         'blog/post_list.html',
-        { "posts": posts }
+        {
+            "title": "Hello I'm using a backend framework",
+            "posts": posts
+        }
         # the above is sending context
         # which is data to the template
     )
