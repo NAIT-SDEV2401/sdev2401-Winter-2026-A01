@@ -45,7 +45,14 @@ def home_page(request):
         # as context to the template
     )
 
+# below we have another parameter
+# that's going to be passed in from the url.
+def pet_type_details(request, pet_type):
 
+    return render(
+        request, # passing the request to the response
+        "pet_adoption/pet_detail.html" # the template
+    )
 
 
 
