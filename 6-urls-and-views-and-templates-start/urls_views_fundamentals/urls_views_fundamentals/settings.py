@@ -54,10 +54,16 @@ MIDDLEWARE = [
 
 ROOT_URLCONF = "urls_views_fundamentals.urls"
 
+
 TEMPLATES = [
     {
         "BACKEND": "django.template.backends.django.DjangoTemplates",
-        "DIRS": [],
+        # change this to add a base template to our directories
+        # this is going to be at the root of the project
+        # contain extendable templates.
+        "DIRS": ["templates"],
+        # this line below is looking for templates in the
+        # directories of APPNAME/templates/APPNAME
         "APP_DIRS": True,
         "OPTIONS": {
             "context_processors": [
