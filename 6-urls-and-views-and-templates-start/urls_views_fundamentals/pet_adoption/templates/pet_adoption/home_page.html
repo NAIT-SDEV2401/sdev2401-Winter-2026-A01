@@ -1,12 +1,14 @@
-<!doctype html>
-<html>
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
-    <title>Django, posts app</title>
-  </head>
-  <body>
+<!-- Extend the base template -->
+{% extends "base.html" %}
+
+<!-- Override the title -->
+{% block title %}
+    Pet Adoption Home
+{% endblock %}
+
+{% block content %}
+    <!-- We should see this comment
+     if it's succesfully overridden -->
     <div class="max-w-2xl mx-auto">
         <h1 class="text-3xl font-bold underline">
           Welcome to the Pet Adoption Matcher!
@@ -35,5 +37,4 @@
 
         </section>
     </div>
-  </body>
-</html>
+{% endblock %}
