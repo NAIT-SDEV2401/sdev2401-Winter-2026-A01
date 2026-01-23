@@ -1,8 +1,11 @@
 <!-- extend base template -->
 {% extends "base.html" %}
 
-
-
+<!-- Let's say you want to keep
+the existing title but add to it. -->
+{% block title %}
+    {{ block.super }} - detail - {{ pet_type }}
+{% endblock %}
 
 {% block content %}
 <div class="max-w-2xl mx-auto">
