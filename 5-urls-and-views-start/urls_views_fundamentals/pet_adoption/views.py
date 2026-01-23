@@ -60,10 +60,15 @@ def pet_type_details(request, pet_type):
     # at pet_type if it exists otherwise
     # it'll be None
     context["pet_data"] = pet_data
-
-
     return render(
         request, # passing the request to the response
         "pet_adoption/pet_details.html", # the template
         context
     )
+
+
+
+
+
+
+
