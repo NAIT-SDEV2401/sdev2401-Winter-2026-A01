@@ -49,13 +49,20 @@ def home_page(request):
 # that's going to be passed in from the url.
 def pet_type_details(request, pet_type):
 
+    # take a look at what pet_type
+    # breakpoint()
+    context = {
+        "pet_type": pet_type
+    }
+    # i'm goinge the data from the dictionary
+    pet_data = PET_TYPES.get(pet_type, None)
+    # in the above we're getting the value
+    # at pet_type if it exists otherwise
+    # it'll be None
+    context["pet_data"] = pet_data
+
     return render(
         request, # passing the request to the response
-        "pet_adoption/pet_detail.html" # the template
+        "pet_adoption/pet_details.html", # the template
+        context
     )
-
-
-
-
-
-

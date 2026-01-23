@@ -27,11 +27,12 @@ urlpatterns = [
     # we're going to make the connection
     # betwee the url path and the new view
     path(
-        "pet_type/<str:pet_type>",
+        "pet_type/<str:pet_type>/",
         # the second part between the <>
         # defining that it's a str and
         # that you're going to pass a arg
         # called pet type
-        pet_type_details
+        pet_type_details,
+        name="pet_type_details"
     )
 ]
