@@ -20,6 +20,7 @@ class Company(models.Model):
     # Note: no need to add the id, it's added by default.
 
 
+
     # let's override __str__ so it's a bit nicer
     # when we print or call this.
     def __str__(self):
