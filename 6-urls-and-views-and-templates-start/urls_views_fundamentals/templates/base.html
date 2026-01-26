@@ -13,7 +13,17 @@
   </head>
   <body>
     <header>
-        {% block header %}{% endblock %}
+        {% block header %}
+        <!-- Add some nav here. -->
+        <nav class="bg-gray-800 p-4">
+            <div class="max-w-2xl mx-auto flex justify-between items-center">
+                <!-- We're going to use the named urls -->
+                <a href="{% url 'home_page' %}" class="text-white text-lg font-semibold">
+                    Pet Adoption App
+                </a>
+            </div>
+        </nav>
+        {% endblock %}
     </header>
     <main>
         {% block content %}{% endblock %}
