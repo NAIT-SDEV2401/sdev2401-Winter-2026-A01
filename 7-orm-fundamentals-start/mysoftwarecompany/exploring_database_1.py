@@ -29,7 +29,14 @@ print(F"The email is {first_company.email}")
 # note objects.filter this is will return a list of matching items.
 print("\n\nUsing filter")
 companies_with_acme = Company.objects.filter(name="Acme Inc.")
+# note this will return a list of items.
 print(F"Here's the amount of items with Acme inc. as the name {len(companies_with_acme)}")
-breakpoint()
 
+# let's use get
+company_at_id_two = Company.objects.get(id=2)
+# this returns a single item here
+print(F"company at id 2 is: {company_at_id_two}")
+# note get will throw an error if not found
+
+breakpoint()
 
