@@ -67,11 +67,14 @@ print(F"BEST BBQ: {rick_and_garys_company.name} \n contact at {rick_and_garys_co
 
 # Let's talk about updating
 # update table where ... in SQL
-company_to_update = Company.objects.get(id=4)
 
+company_to_update = Company.objects.get(id=5)
 breakpoint()
 # reassign the fields on the company
 company_to_update.name = "Steve's Dunking Co"
 company_to_update.email = "Steve@test.com"
 # save commits the changes to database
 company_to_update.save()
+
+# deleting.
+company_to_update.delete()
