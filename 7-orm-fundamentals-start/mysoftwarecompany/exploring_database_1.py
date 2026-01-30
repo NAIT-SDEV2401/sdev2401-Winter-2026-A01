@@ -45,6 +45,22 @@ rick_and_garys_company = Company.objects.get(
     name="rick and garys bbq"
 )
 
-print(F"BEST BBQ: {rick_and_garys_company.name} contact at {rick_and_garys_company.email}")
+print(F"BEST BBQ: {rick_and_garys_company.name} \n contact at {rick_and_garys_company.email}")
 
+# print("CREATE IN THE DATABASE")
+# .objects.create is going to be INSERT INTO
+# new_company = Company.objects.create(
+#     name="Dog Walking co",
+#     email="dog@test.com"
+# )
 
+# get or create is handy because you can always fetch the record (if it's create or not)
+# syntax returns first the object and second a boolean if it was created.
+company_four, created = Company.objects.get_or_create(
+    name="Dans Cat Meowing Competition",
+    email="danscats@test.com"
+)
+
+print(F"the value from {company_four}")
+print(company_four)
+print(F"created {created}")
