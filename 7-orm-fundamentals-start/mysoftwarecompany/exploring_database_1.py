@@ -40,12 +40,12 @@ print(F"company at id 2 is: {company_at_id_two}")
 
 # two mins - use .get to get the company of rick and garys bbq.
 # display name and email in a string.
-rick_and_garys_company = Company.objects.get(
-    # i can get on any field.
-    name="rick and garys bbq"
-)
+# rick_and_garys_company = Company.objects.get(
+#     # i can get on any field.
+#     name="rick and garys bbq"
+# )
 
-print(F"BEST BBQ: {rick_and_garys_company.name} \n contact at {rick_and_garys_company.email}")
+# print(F"BEST BBQ: {rick_and_garys_company.name} \n contact at {rick_and_garys_company.email}")
 
 # print("CREATE IN THE DATABASE")
 # .objects.create is going to be INSERT INTO
@@ -56,10 +56,10 @@ print(F"BEST BBQ: {rick_and_garys_company.name} \n contact at {rick_and_garys_co
 
 # get or create is handy because you can always fetch the record (if it's create or not)
 # syntax returns first the object and second a boolean if it was created.
-# company_four, created= Company.objects.get_or_create(
-#     name="Dans Cat Meowing Competition",
-#     email="danscats@test.com"
-# )
+company_four, created= Company.objects.get_or_create(
+    name="Gary Cat Meowing Competition",
+    email="garycats@test.com"
+)
 # breakpoint()
 # print(F"the value from {company_four}")
 # print(company_four)
@@ -68,13 +68,13 @@ print(F"BEST BBQ: {rick_and_garys_company.name} \n contact at {rick_and_garys_co
 # Let's talk about updating
 # update table where ... in SQL
 
-company_to_update = Company.objects.get(id=5)
-breakpoint()
-# reassign the fields on the company
-company_to_update.name = "Steve's Dunking Co"
-company_to_update.email = "Steve@test.com"
-# save commits the changes to database
-company_to_update.save()
+# company_to_update = Company.objects.get(id=5)
+# breakpoint()
+# # reassign the fields on the company
+# company_to_update.name = "Steve's Dunking Co"
+# company_to_update.email = "Steve@test.com"
+# # save commits the changes to database
+# company_to_update.save()
 
-# deleting.
-company_to_update.delete()
+# # deleting.
+# company_to_update.delete()
