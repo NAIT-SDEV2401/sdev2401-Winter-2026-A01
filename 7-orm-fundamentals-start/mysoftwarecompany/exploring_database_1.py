@@ -56,11 +56,22 @@ print(F"BEST BBQ: {rick_and_garys_company.name} \n contact at {rick_and_garys_co
 
 # get or create is handy because you can always fetch the record (if it's create or not)
 # syntax returns first the object and second a boolean if it was created.
-company_four, created = Company.objects.get_or_create(
-    name="Dans Cat Meowing Competition",
-    email="danscats@test.com"
-)
+# company_four, created= Company.objects.get_or_create(
+#     name="Dans Cat Meowing Competition",
+#     email="danscats@test.com"
+# )
+# breakpoint()
+# print(F"the value from {company_four}")
+# print(company_four)
+# print(F"created {created}")
 
-print(F"the value from {company_four}")
-print(company_four)
-print(F"created {created}")
+# Let's talk about updating
+# update table where ... in SQL
+company_to_update = Company.objects.get(id=4)
+
+breakpoint()
+# reassign the fields on the company
+company_to_update.name = "Steve's Dunking Co"
+company_to_update.email = "Steve@test.com"
+# save commits the changes to database
+company_to_update.save()
