@@ -33,10 +33,11 @@ companies_with_acme = Company.objects.filter(name="Acme Inc.")
 print(F"Here's the amount of items with Acme inc. as the name {len(companies_with_acme)}")
 
 # let's use get
-company_at_id_two = Company.objects.get(id=2)
+company_at_id_two = Company.objects.get(id=2) # if there's no item there.
 # this returns a single item here
 print(F"company at id 2 is: {company_at_id_two}")
 # note get will throw an error if not found
 
-breakpoint()
+# two mins - use .get to get the company of rick and garys bbq.
+
 
