@@ -39,5 +39,12 @@ print(F"company at id 2 is: {company_at_id_two}")
 # note get will throw an error if not found
 
 # two mins - use .get to get the company of rick and garys bbq.
+# display name and email in a string.
+rick_and_garys_company = Company.objects.get(
+    # i can get on any field.
+    name="rick and garys bbq"
+)
+
+print(F"BEST BBQ: {rick_and_garys_company.name} contact at {rick_and_garys_company.email}")
 
 
