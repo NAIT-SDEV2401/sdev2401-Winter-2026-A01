@@ -1,13 +1,20 @@
 from django.shortcuts import render
 
-# import companies
+# import the company model
+from .models import Company
 
 def list_companies(request):
 
     # I want you to get all of the companies
+    companies = Company.objects.all()
+
 
     return render(
-        # request
-        # template name "clients/companies_list.html"
-        # pass what's from the database to the context.
+        request,
+        "clients/companies_list.html",
+        {
+            # the line below we're passing the query values (rows from table)
+            # to the template
+            "companies": companies
+        }
     )
