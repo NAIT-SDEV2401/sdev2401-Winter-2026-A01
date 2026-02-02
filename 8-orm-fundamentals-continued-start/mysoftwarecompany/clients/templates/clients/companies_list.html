@@ -14,12 +14,16 @@
                     <div>
                         {{company.email}}
                     </div>
+                    <!-- Using our new description field-->
                     {% if company.description %}
                     <div>What they do:</div>
                     <p>
                         {{ company.description }}
                     </p>
                     {% endif %}
+                    <!-- our new fields for dates. -->
+                    <p>Created: {{ company.created_at }}</p>
+                    <p>Last Updated: {{ company.updated_at }}</p>
                 </li>
             {% endfor %}
             </ul>
