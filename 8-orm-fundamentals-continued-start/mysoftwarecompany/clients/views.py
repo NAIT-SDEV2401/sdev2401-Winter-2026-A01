@@ -8,6 +8,6 @@ def list_companies(request):
 
     return render(
         # request
-        # template name "clients/list.html"
+        # template name "clients/companies_list.html"
         # pass what's from the database to the context.
     )
