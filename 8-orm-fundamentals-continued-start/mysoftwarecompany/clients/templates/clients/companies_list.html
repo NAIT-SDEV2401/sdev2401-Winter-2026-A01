@@ -14,6 +14,12 @@
                     <div>
                         {{company.email}}
                     </div>
+                    {% if company.description %}
+                    <div>What they do:</div>
+                    <p>
+                        {{ company.description }}
+                    </p>
+                    {% endif %}
                 </li>
             {% endfor %}
             </ul>
