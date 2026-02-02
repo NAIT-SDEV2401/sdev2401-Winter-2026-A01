@@ -6,6 +6,7 @@ from .models import Company
 def list_companies(request):
 
     # I want you to get all of the companies
+    # getting all of the rows in this table
     companies = Company.objects.all()
 
 
