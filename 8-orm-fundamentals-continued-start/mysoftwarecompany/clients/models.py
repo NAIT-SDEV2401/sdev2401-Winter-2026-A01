@@ -6,6 +6,13 @@ class Company(models.Model):
 
     name = models.CharField(max_length=100)
     email = models.EmailField(max_length=100, unique=True)
+    # let's add a description
+    # we're also going to add blank=True, null=True
+    # it makes less strict when you need to add something to the database.
+    description = models.TextField(
+        blank=True, null=True, default=""
+    )
+
 
     def __str__(self):
         return self.name

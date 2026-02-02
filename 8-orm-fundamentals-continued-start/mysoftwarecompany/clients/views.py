@@ -9,7 +9,6 @@ def list_companies(request):
     # getting all of the rows in this table
     companies = Company.objects.all()
 
-    #
     return render(
         request,
         "clients/companies_list.html",
