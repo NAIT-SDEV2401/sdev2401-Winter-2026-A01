@@ -25,3 +25,12 @@ class Employee(models.Model):
     updated_at = models.DateTimeField(auto_now=True)
 
     # create my foreign key relationship.
+    company = models.ForeignKey(
+        Company, # model to relate to.
+        on_delete=models.CASCADE,
+        # the above just means if you delete
+        # the company you delete the employees
+        related_name='employees'
+        # the field of this model on employees
+    )
+
