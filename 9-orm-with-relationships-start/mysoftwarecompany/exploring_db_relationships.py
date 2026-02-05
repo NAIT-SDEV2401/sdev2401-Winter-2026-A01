@@ -25,3 +25,13 @@ all_employees = Employee.objects.filter(
 print("All employees")
 print(all_employees)
 
+# let's create an employee
+new_employee = Employee.objects.create(
+    # core fields
+    first_name="Rick",
+    last_name="Steves",
+    email="rick@test.com",
+    # relationship will take an instance
+    company=acme_company
+)
+
