@@ -49,11 +49,17 @@ class Employee(models.Model):
     )
     # one more relationship (foreign key)
     # role
-        # Role
-        # on_delete=models.SET_NULL
-        # blank=True
-        # null=True
-        # related_name="employees"
+    role = models.ForeignKey(
+        Role, # Role
+        on_delete=models.SET_NULL,
+        # whenever I delete a role I set
+        # the this field on employee to null.
+
+        blank=True,
+        null=True,
+        related_name="employees"
+        # on the Role model role.employees...
+    )
 
     def __str__(self):
         return F"{self.first_name} {self.last_name}" \
