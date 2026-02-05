@@ -47,6 +47,13 @@ class Employee(models.Model):
         # the employees with company.employees
         # this is what related name is doing.
     )
+    # one more relationship (foreign key)
+    # role
+        # Role
+        # on_delete=models.SET_NULL
+        # blank=True
+        # null=True
+        # related_name="employees"
 
     def __str__(self):
         return F"{self.first_name} {self.last_name}" \
