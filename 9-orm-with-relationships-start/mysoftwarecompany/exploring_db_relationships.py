@@ -34,4 +34,7 @@ new_employee = Employee.objects.create(
     # relationship will take an instance
     company=acme_company
 )
+print("new_employee")
+print(new_employee)
+
 
