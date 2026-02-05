@@ -31,6 +31,12 @@ class Employee(models.Model):
         # the above just means if you delete
         # the company you delete the employees
         related_name='employees'
-        # the field of this model on employees
+        # on company we'll be able to select
+        # the employees with company.employees
+        # this is what related name is doing.
     )
+
+    def __str__(self):
+        return F"{self.first_name} {self.last_name}" \
+            F" works at {self.company.name}"
 
