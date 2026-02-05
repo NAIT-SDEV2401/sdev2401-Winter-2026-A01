@@ -26,15 +26,28 @@ print("All employees")
 print(all_employees)
 
 # let's create an employee
-new_employee = Employee.objects.create(
-    # core fields
-    first_name="Rick",
-    last_name="Steves",
-    email="rick@test.com",
-    # relationship will take an instance
-    company=acme_company
+# new_employee = Employee.objects.create(
+#     # core fields
+#     first_name="Rick",
+#     last_name="Steves",
+#     email="rick@test.com",
+#     # relationship will take an instance
+#     company=acme_company
+# )
+# print("new_employee")
+# print(new_employee)
+
+another_employee = Employee(
+    first_name="Gary",
+    last_name="the guy",
+    email="garay@test.com",
+    company=acme_company,
 )
-print("new_employee")
-print(new_employee)
+# the above gives an instance of employee
+# but it's not committed to the database yet
+another_employee.save()
+# this line above will commit it to the db.
+print("another_employee")
+print(another_employee)
 
 
