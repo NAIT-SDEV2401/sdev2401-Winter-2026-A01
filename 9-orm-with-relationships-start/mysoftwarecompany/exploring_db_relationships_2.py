@@ -6,6 +6,7 @@ django.setup()
 print("Django environment set up successfully.")
 
 # import the Role model.
+from clients.models import Role
 
 roles_data = [
     {"name": "CEO", "description": "Chief Executive Officer"},
@@ -14,6 +15,15 @@ roles_data = [
 ]
 
 # I want you to loop through the roles
-# use get or create wit hthe data to create
-# roles.
-# display if it was created or selected from the db
+for role_data in roles_data:
+    # use get or create wit hthe data to create
+    # roles.
+    role, created = Role.objects.get_or_create(
+        name=role_data["name"],
+        description=role_data["description"],
+    )
+    # display if it was created or selected from the db
+    if created:
+        print(F"created role: {role}")
+    else:
+        print(F"selected role: {role} from the db")
