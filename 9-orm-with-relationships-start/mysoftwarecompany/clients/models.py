@@ -16,7 +16,8 @@ class Company(models.Model):
 
 # create a model called Role with the fields
     # name charfield max_length 50 unique
-    # description Textfield with blank = true and null = True
+    # description Textfield with blank = true
+    #   and null = True
     # created_at
     # updated_at
 
