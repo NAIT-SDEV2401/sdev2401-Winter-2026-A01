@@ -15,12 +15,17 @@ class Company(models.Model):
         return self.name
 
 # create a model called Role with the fields
+class Role(models.Model):
     # name charfield max_length 50 unique
+    name = models.CharField(max_length=50, unique=True)
     # description Textfield with blank = true
     #   and null = True
-    # created_at
-    # updated_at
+    description = models.TextField(blank=True, null=True)
+    created_at = models.DateTimeField(auto_now_add=True)  # Automatically set the field to now when the object is first created
+    updated_at = models.DateTimeField(auto_now=True)
 
+    def __str__(self):
+        return self.name
 
 class Employee(models.Model):
     # core fields
