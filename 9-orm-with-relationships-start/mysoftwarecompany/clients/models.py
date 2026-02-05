@@ -14,6 +14,13 @@ class Company(models.Model):
     def __str__(self):
         return self.name
 
+# create a model called Role with the fields
+    # name charfield max_length 50 unique
+    # description Textfield with blank = true and null = True
+    # created_at
+    # updated_at
+
+
 class Employee(models.Model):
     # core fields
     first_name = models.CharField(max_length=50)
