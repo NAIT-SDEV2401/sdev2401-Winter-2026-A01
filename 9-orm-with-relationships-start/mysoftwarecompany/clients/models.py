@@ -20,7 +20,6 @@ class Employee(models.Model):
     last_name = models.CharField(max_length=50)
     email = models.EmailField(
         max_length=100, unique=True)
-
     created_at = models.DateTimeField(auto_now_add=True)  # Automatically set the field to now when the object is first created
     updated_at = models.DateTimeField(auto_now=True)
 
