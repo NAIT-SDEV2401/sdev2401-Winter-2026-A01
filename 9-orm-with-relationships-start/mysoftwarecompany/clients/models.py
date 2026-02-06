@@ -59,7 +59,6 @@ class Employee(models.Model):
         on_delete=models.SET_NULL,
         # whenever I delete a role I set
         # the this field on employee to null.
-
         blank=True,
         null=True, # nullable (can be null)
         related_name="employees"
