@@ -62,10 +62,26 @@ def create_new_employees_if_not_existing(employee_list):
     # in the function
     # loop through the data.
     for employee_data in employee_list:
+        # select company
+        company = Company.objects.get(name=employee_data["company"])
+        # select role
+        role = Role.objects.get(name=employee_data["role"])
         # create the employees.
-        company = Company.objects.get(
-            name=employee_data["company"]
+        # we're going to use get or create so that we can run this
+        # over and over again not break the script.
+        employee, created = Employee.objects.get_or_create(
+            # core fields
+            first_name=employee_data["first_name"],
+            last_name=employee_data["last_name"],
+            email=employee_data["email"],
+            # relationships.
+            company=company,
+            role=role
         )
+        if created:
+            print(F"Created {employee}")
+        else:
+            print(F"Selected {employee} from DB.")
 
 # main function
 def main():
