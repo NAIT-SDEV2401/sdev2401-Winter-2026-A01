@@ -2,8 +2,9 @@ import os
 import django
 os.environ.setdefault("DJANGO_SETTINGS_MODULE", "mysoftwarecompany.settings")
 django.setup()
+# ignore above.
 
-print("Django environment set up successfully.")
+from clients.models import Company, Role, Employee
 
 new_employees_data_acme = [
     {
@@ -56,11 +57,21 @@ new_employees_data_cat_sitting_int = [
 ]
 
 # I want you to create a function that will take on arg
-# this is the list
-# in the function
-# loop through the data.
-# create the employees.
+def create_new_employees_if_not_existing(employee_list):
+    # this is the list
+    # in the function
+    for employee_data in employee_list:
+        breakpoint()
+    # loop through the data.
+    # create the employees.
 
 # main function
+def main():
+    print("loading Acme Inc. employees")
+    create_new_employees_if_not_existing(
+        new_employees_data_acme
+    )
 # that call the above function with both lists
 # call that funcition.
+if __name__ == "__main__":
+    main()
