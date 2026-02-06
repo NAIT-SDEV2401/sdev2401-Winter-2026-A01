@@ -11,6 +11,11 @@ class Company(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)  # Automatically set the field to now when the object is first created
     updated_at = models.DateTimeField(auto_now=True)
 
+    # foreign key of company on the Employees model
+    # is going to give us the .employees field here.
+
+    # if I delete a company I'll delete all employees
+
     def __str__(self):
         return self.name
 
