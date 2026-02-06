@@ -61,7 +61,7 @@ class Employee(models.Model):
         # the this field on employee to null.
 
         blank=True,
-        null=True,
+        null=True, # nullable (can be null)
         related_name="employees"
         # on the Role model role.employees...
     )
