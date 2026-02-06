@@ -60,13 +60,16 @@ new_employees_data_cat_sitting_int = [
 def create_new_employees_if_not_existing(employee_list):
     # this is the list
     # in the function
-    for employee_data in employee_list:
-        breakpoint()
     # loop through the data.
-    # create the employees.
+    for employee_data in employee_list:
+        # create the employees.
+        company = Company.objects.get(
+            name=employee_data["company"]
+        )
 
 # main function
 def main():
+
     print("loading Acme Inc. employees")
     create_new_employees_if_not_existing(
         new_employees_data_acme
