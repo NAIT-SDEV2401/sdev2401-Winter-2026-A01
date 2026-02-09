@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="max-w-2xl mx-auto">
+    <h1 class="text-3xl font-bold underline">
+        <!-- title here-->
+        Employees of {{ company.name }}
+    </h1>
+    <!-- Let's display the search query -->
+    <div class="text-lg">Results for: "{{ query }}"</div>
+    <!-- We're going to loop over the employees -->
+    <ul class="list-disc pl-5">
+        {% for employee in employees %}
+        <li class="mb-2">
+            <strong>{{ employee.first_name }} {{ employee.last_name }}</strong>
+            <div>
+                {{ employee.email }}
+            </div>
+            {% if employee.role %}
+            <div>Role: {{ employee.role }}</div>
+            {% endif %}
+        </li>
+        {% endfor %}
+    </ul>
+</div>
+{% endblock %}
