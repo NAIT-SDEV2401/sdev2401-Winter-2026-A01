@@ -21,7 +21,19 @@
     <!-- Add a section below for the employees -->
     <section class="mt-6">
         <h2 class="text-2xl font-semibold">Employees</h2>
+        <!-- With our knowledge of loops
+         and our knowledge of template tags we
+         can loop through existing employees.
+         the value company.employees.all in the template
+         you don't need to use the () (django templating syntax.)
+         -->
         <ul class="list-disc pl-5">
+            {% for employee in company.employees.all %}
+            <li>
+                <!-- this looks at the employee fields. -->
+                {{ employee.first_name }} {{ employee.last_name }}
+            </li>
+            {% endfor %}
         </ul>
     </section>
 

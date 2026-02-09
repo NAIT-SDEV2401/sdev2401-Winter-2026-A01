@@ -42,7 +42,10 @@ class Employee(models.Model):
     # This creates a many-to-one relationship where each employee belongs to one company
     # the models.CASCADE means that if the company is deleted, all related employees will also be deleted.
     # the related_name allows you to access the employees from the company instance using company.employees.all()
-    company = models.ForeignKey(Company, on_delete=models.CASCADE, related_name='employees')
+    company = models.ForeignKey(Company,
+        on_delete=models.CASCADE,
+        related_name='employees'
+    )
 
     role = models.ForeignKey(Role, on_delete=models.SET_NULL, blank=True, null=True, related_name='employees')
 
