@@ -27,3 +27,11 @@ def company_detail(request, company_id):
         {'company': company}
     )
 
+# is we're going to create a employee search results page.
+
+def employees_search_results(request, company_id):
+
+    return render(
+        request,
+        'clients/employees_search_results.html'
+    )
