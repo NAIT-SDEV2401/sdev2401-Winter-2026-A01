@@ -1,4 +1,5 @@
 from django.shortcuts import render, get_object_or_404
+from django.db.models import Q
 
 # Create your views here.
 from .models import Company, Employee
@@ -43,11 +44,16 @@ def employees_search_results(request, company_id):
         # field look up docs here: https://docs.djangoproject.com/en/5.2/ref/models/querysets/#field-lookups
         # remember that company.employees is queryset (many rows of instances)
         # that we can filter the first name if it contains any part of the query.
+        # note Q objects are ORM specific which all you to do
+        # OR is |,  AND is &, or NOT is ~
+        # docs here: https://docs.djangoproject.com/en/5.2/topics/db/queries/#complex-lookups-with-q-objects
         employees = company.employees.filter(
-            first_name__icontains=query
+            Q(first_name__icontains=query) | # only one pipe
+            Q(last_name__icontains=query)
         )
+        # so the above is going to search for the first name OR the last name
         # in sql
-        # SELECT * FROM clients_employees WHERE first_name LIKE '%query%'.
+        # SELECT * FROM clients_employees WHERE first_name LIKE '%query%' OR last_name LIKE '%query%'
     else: # there's no query
         # if there's no query you can just provide an empty queryset
         employees = Employee.objects.none()
