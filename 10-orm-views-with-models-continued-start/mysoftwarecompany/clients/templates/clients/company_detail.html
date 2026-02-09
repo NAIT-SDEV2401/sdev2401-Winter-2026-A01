@@ -32,6 +32,16 @@
             <li>
                 <!-- this looks at the employee fields. -->
                 {{ employee.first_name }} {{ employee.last_name }}
+                <!-- We can check if they have a role and if so add it -->
+                {% if employee.role %}
+                <span class="text-gray-600 font-bold">
+                    ({{ employee.role }})
+                </span>
+                {% else %}
+                <span class="text-gray-600 font-bold">
+                    (role unknown)
+                </span>
+                {% endif %}
             </li>
             {% endfor %}
         </ul>

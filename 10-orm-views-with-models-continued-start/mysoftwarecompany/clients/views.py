@@ -14,7 +14,6 @@ def list_companies(request):
 # we're going to use the id of the company in the detail view
 def company_detail(request, company_id):
     # get the object or 404 which does what it says.
-
     company = get_object_or_404(
         Company, # the model to fetch from.
         id=company_id # id is the field on the db,
