@@ -31,6 +31,13 @@ def company_detail(request, company_id):
 
 def employees_search_results(request, company_id):
 
+    # select the specific company.
+    company = get_object_or_404(Company, id=company_id)
+    # let's get a query parameter from the request object.
+    query = request.GET.get('q', '')
+
+    breakpoint()
+
     return render(
         request,
         'clients/employees_search_results.html'
