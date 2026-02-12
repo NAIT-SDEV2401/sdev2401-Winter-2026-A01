@@ -26,8 +26,20 @@ def contact_us(request):
             name = form.cleaned_data.get('name')
             email = form.cleaned_data.get('email')
             message = form.cleaned_data.get('message')
+            # the above cleaned data this can be
+            # saved to the database
 
-            breakpoint()
+            # the last line of success is something
+            # i'll use in my template to show some
+            # type of message.
+            return render(request,
+                          "clients/contact_us.html",
+                          {
+                              "form": form,
+                              "success": True
+                          })
+
+
 
 
     if request.method == "GET":

@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<!-- If you want to use this rename
+ this file to contact_us.html
+
+-->
+<div class="max-w-2xl mx-auto">
+    <h1 class="text-3xl font-bold underline">
+        <!-- title here-->
+        Contact Us
+    </h1>
+    <!-- the fundamental way (we'll change this shortly) -->
+    {% if success %}
+    <p>Message sent successfully.</p>
+    {% endif %}
+    <!-- Add the form -->
+    <form method="post" class="mt-4">
+        <!-- Add the csrf token -->
+        {% csrf_token %}
+        <!-- Add the fields as paragraphs -->
+        {{ form.as_p }}
+        <!--
+        In the html the fields will look something like this
+
+        <p>
+        <label for="id_email">Email:</label>
+        <input type="email"
+            name="email"
+            maxlength="320"
+            required=""
+            id="id_email">
+        </p>
+
+        -->
+        <button type="submit" class="mt-4 px-4 py-2 bg-blue-500 text-white rounded">
+            Submit
+        </button>
+    </form>
+</div>
+{% endblock %}

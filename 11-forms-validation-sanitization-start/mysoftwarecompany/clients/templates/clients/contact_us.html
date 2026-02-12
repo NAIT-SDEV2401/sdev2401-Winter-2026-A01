@@ -1,33 +1,34 @@
 {% extends 'base.html' %}
 
 {% block content %}
+
 <div class="max-w-2xl mx-auto">
     <h1 class="text-3xl font-bold underline">
         <!-- title here-->
         Contact Us
     </h1>
-    <!-- Add the form -->
+    <!-- We're going to loop field indiviually -->
     <form method="post" class="mt-4">
-        <!-- Add the csrf token -->
-        {% csrf_token %}
-        <!-- Add the fields as paragraphs -->
-        {{ form.as_p }}
-        <!--
-        In the html the fields will look something like this
+    <!-- Every form will have a csrf_token -->
 
-        <p>
-        <label for="id_email">Email:</label>
-        <input type="email"
-            name="email"
-            maxlength="320"
-            required=""
-            id="id_email">
+    {% for field in form %}
+        <label for="{{field.id_for_label}}" class="block text-sm font-medium text-gray-700">
+            {{ field.label }}
+        </label>
+        {{ field }}
+
+        {% if field.errors %}
+        <!-- display errors if we have them -->
+        <p class="text-sm text-red-500 mt-1">
+            {{ field.errors | striptags }}
         </p>
 
-        -->
-        <button type="submit" class="mt-4 px-4 py-2 bg-blue-500 text-white rounded">
-            Submit
-        </button>
+        {% endif %}
+    {% endfor %}
+    <button type="submit" class="mt-4 px-4 py-2 bg-blue-500 text-white rounded">
+        Submit
+    </button>
     </form>
+
 </div>
 {% endblock %}
