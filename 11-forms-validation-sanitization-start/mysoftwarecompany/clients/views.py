@@ -7,11 +7,28 @@ from django.shortcuts import get_object_or_404
 # Create your views here.
 from .models import Company, Employee
 
-# let's import our form
+# let's import our forms file.
 from .forms import ContactForm
 
 # let's create our contact us form page here.
 def contact_us(request):
+    if request.method == "POST":
+        # we know that request.POST
+        # is a dictionary from the request.
+        # we're going to pass it in to form
+        form = ContactForm(request.POST)
+        if form.is_valid():
+            # the above is doing two things
+            # first its VALIDATING (checking if the data
+            # is what we expect)
+            # second its CLEANING/SANTIZING (making the
+            # user data useable in our code.)
+            name = form.cleaned_data.get('name')
+            email = form.cleaned_data.get('email')
+            message = form.cleaned_data.get('message')
+
+            breakpoint()
+
 
     if request.method == "GET":
         form = ContactForm()

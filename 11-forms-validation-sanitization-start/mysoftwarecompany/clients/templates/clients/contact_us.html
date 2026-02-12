@@ -7,14 +7,27 @@
         Contact Us
     </h1>
     <!-- Add the form -->
-     <form method="post" class="mt-4">
+    <form method="post" class="mt-4">
         <!-- Add the csrf token -->
         {% csrf_token %}
         <!-- Add the fields as paragraphs -->
         {{ form.as_p }}
+        <!--
+        In the html the fields will look something like this
+
+        <p>
+        <label for="id_email">Email:</label>
+        <input type="email"
+            name="email"
+            maxlength="320"
+            required=""
+            id="id_email">
+        </p>
+
+        -->
         <button type="submit" class="mt-4 px-4 py-2 bg-blue-500 text-white rounded">
             Submit
         </button>
-     </form>
+    </form>
 </div>
 {% endblock %}
