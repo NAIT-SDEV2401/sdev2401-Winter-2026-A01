@@ -7,27 +7,30 @@
         <!-- title here-->
         Contact Us
     </h1>
-    <!-- We're going to loop field indiviually -->
     <form method="post" class="mt-4">
-    <!-- Every form will have a csrf_token -->
+        <!-- Every form will have a csrf_token -->
+        {% csrf_token %}
+        <!-- We're going to loop field indiviually -->
+        {% for field in form %}
+            <!-- rendering the label. -->
+            <label for="{{field.id_for_label}}" class="block text-sm font-medium text-gray-700">
+                {{ field.label }}
+            </label>
+            <!-- renders the field itself. -->
+            {{ field }}
 
-    {% for field in form %}
-        <label for="{{field.id_for_label}}" class="block text-sm font-medium text-gray-700">
-            {{ field.label }}
-        </label>
-        {{ field }}
+            <!-- displays the error. -->
+            {% if field.errors %}
+            <!-- display errors if we have them -->
+            <p class="text-sm text-red-500 mt-1">
+                {{ field.errors | striptags }}
+            </p>
 
-        {% if field.errors %}
-        <!-- display errors if we have them -->
-        <p class="text-sm text-red-500 mt-1">
-            {{ field.errors | striptags }}
-        </p>
-
-        {% endif %}
-    {% endfor %}
-    <button type="submit" class="mt-4 px-4 py-2 bg-blue-500 text-white rounded">
-        Submit
-    </button>
+            {% endif %}
+        {% endfor %}
+        <button type="submit" class="mt-4 px-4 py-2 bg-blue-500 text-white rounded">
+            Submit
+        </button>
     </form>
 
 </div>
