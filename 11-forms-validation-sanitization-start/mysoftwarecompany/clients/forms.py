@@ -30,6 +30,11 @@ class ContactForm(forms.Form):
                 "the message needs to be more than 10 characters"
             )
 
-        breakpoint()
+        words = message.split(' ')
+        word_count = len(words)
+        if word_count <= 2:
+            raise forms.ValidationError(
+                "needs to be more than two words."
+            )
 
         return message
