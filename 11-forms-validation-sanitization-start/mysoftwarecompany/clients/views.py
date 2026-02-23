@@ -12,6 +12,7 @@ from .forms import ContactForm
 
 # let's create our contact us form page here.
 def contact_us(request):
+    form = None
     if request.method == "POST":
         # we know that request.POST
         # is a dictionary from the request.
@@ -28,7 +29,7 @@ def contact_us(request):
             message = form.cleaned_data.get('message')
             # the above cleaned data this can be
             # saved to the database
-
+            breakpoint()
             # the last line of success is something
             # i'll use in my template to show some
             # type of message.
@@ -39,10 +40,7 @@ def contact_us(request):
                               "success": True
                           })
 
-
-
-
-    if request.method == "GET":
+    else: # so any other request method will render the form.
         form = ContactForm()
 
     # i'm always going to return a form.
