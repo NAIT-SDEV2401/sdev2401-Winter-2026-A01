@@ -18,4 +18,18 @@ class ContactForm(forms.Form):
             raise forms.ValidationError(
                 "name must be greater than 2 characters."
             )
+        # return the value if it's valid.
+        return name
 
+    # message needs to be more than ten characters
+    # message needs to be more than two words.
+    def clean_message(self):
+        message = self.cleaned_data.get('message')
+        if len(message) < 10:
+            raise forms.ValidationError(
+                "the message needs to be more than 10 characters"
+            )
+
+        breakpoint()
+
+        return message
