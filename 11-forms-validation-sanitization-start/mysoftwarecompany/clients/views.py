@@ -3,6 +3,7 @@ from django.shortcuts import render
 
 # get the specical function to fetch an object or return a 404 error
 from django.shortcuts import get_object_or_404
+from django.core.mail import send_mail
 
 # Create your views here.
 from .models import Company, Employee
@@ -29,7 +30,18 @@ def contact_us(request):
             message = form.cleaned_data.get('message')
             # the above cleaned data this can be
             # saved to the database
-            breakpoint()
+
+            # let's send an email using the console backend.
+            send_mail(
+                subject=F"New contact message from {name}",
+                message=message,
+                from_email=email,
+                recipient_list=[
+                    "some_admin_account@test.com"
+                    # some account that we control.
+                ]
+            )
+
             # the last line of success is something
             # i'll use in my template to show some
             # type of message.
