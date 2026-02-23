@@ -30,8 +30,11 @@ class ContactForm(forms.Form):
                 "the message needs to be more than 10 characters"
             )
 
+        # convert the message to a words array
         words = message.split(' ')
+        # count the number of items.
         word_count = len(words)
+        # perform the check.
         if word_count <= 2:
             raise forms.ValidationError(
                 "needs to be more than two words."
