@@ -27,14 +27,14 @@ def contact_us(request):
             # user data useable in our code.)
             name = form.cleaned_data.get('name')
             email = form.cleaned_data.get('email')
-            message = form.cleaned_data.get('message')
+            message_from_user = form.cleaned_data.get('message')
             # the above cleaned data this can be
             # saved to the database
 
             # let's send an email using the console backend.
             send_mail(
                 subject=F"New contact message from {name}",
-                message=message,
+                message=message_from_user,
                 from_email=email,
                 recipient_list=[
                     "some_admin_account@test.com"

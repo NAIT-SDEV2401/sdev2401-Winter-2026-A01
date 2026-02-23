@@ -9,3 +9,13 @@ class ContactForm(forms.Form):
     email = forms.EmailField(required=True)
     message = forms.CharField(widget=forms.Textarea, required=True)
 
+    # some validation to make sure that the name is greater
+    # than two characters.
+    def clean_name(self):
+        # get the name from the cleaned_data
+        name = self.cleaned_data.get('name')
+        if len(name) < 2:
+            raise forms.ValidationError(
+                "name must be greater than 2 characters."
+            )
+
