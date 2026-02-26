@@ -13,6 +13,15 @@ from .forms import ContactForm, CompanyForm
 def update_company(request, company_id):
     company = get_object_or_404(Company, id=company_id)
 
+    # I want you to write the rest of this function
+    # I want you handle the post
+    # I want to create the form in the post,
+    # check if it's valid
+    # save it
+    # show if it's been updated successfully.
+
+
+
     # we can create a form with a default instance.
     # this will populate the fields with existing information.
     form = CompanyForm(instance=company)
