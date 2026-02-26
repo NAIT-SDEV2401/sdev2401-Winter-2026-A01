@@ -12,7 +12,6 @@ from .forms import ContactForm, CompanyForm
 # new view to update company
 def update_company(request, company_id):
     company = get_object_or_404(Company, id=company_id)
-
     # I want you to write the rest of this function
     if request.method == "POST":
         # I want you handle the post
@@ -20,13 +19,10 @@ def update_company(request, company_id):
         form = CompanyForm(request.POST, instance=company)
         # check if it's valid
         if form.is_valid():
-
             # save it
             form.save()
-
             # show if it's been updated successfully.
             update_company = form.instance
-
             return render(
                 request,
                 "clients/update_company.html",
@@ -36,8 +32,6 @@ def update_company(request, company_id):
                     "success": True,
                 }
             )
-
-
     else:
         # we can create a form with a default instance.
         # this will populate the fields with existing information.
