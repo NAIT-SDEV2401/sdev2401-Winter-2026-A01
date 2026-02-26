@@ -14,17 +14,34 @@ def update_company(request, company_id):
     company = get_object_or_404(Company, id=company_id)
 
     # I want you to write the rest of this function
-    # I want you handle the post
-    # I want to create the form in the post,
-    # check if it's valid
-    # save it
-    # show if it's been updated successfully.
+    if request.method == "POST":
+        # I want you handle the post
+        # I want to create the form in the post,
+        form = CompanyForm(request.POST, instance=company)
+        # check if it's valid
+        if form.is_valid():
+
+            # save it
+            form.save()
+
+            # show if it's been updated successfully.
+            update_company = form.instance
+
+            return render(
+                request,
+                "clients/update_company.html",
+                {
+                    "company": update_company,
+                    "form": form,
+                    "success": True,
+                }
+            )
 
 
-
-    # we can create a form with a default instance.
-    # this will populate the fields with existing information.
-    form = CompanyForm(instance=company)
+    else:
+        # we can create a form with a default instance.
+        # this will populate the fields with existing information.
+        form = CompanyForm(instance=company)
 
     return render(
         request,
