@@ -9,6 +9,24 @@ from django.shortcuts import get_object_or_404
 from .models import Company, Employee
 from .forms import ContactForm, CompanyForm
 
+# new view to update company
+def update_company(request, company_id):
+    company = get_object_or_404(Company, id=company_id)
+
+    # we can create a form with a default instance.
+    # this will populate the fields with existing information.
+    form = CompanyForm(instance=company)
+
+    return render(
+        request,
+        "clients/update_company.html",
+        {
+            "company": company,
+            "form": form
+        }
+    )
+
+
 def create_company(request):
     if request.method == "POST":
         form = CompanyForm(request.POST)
