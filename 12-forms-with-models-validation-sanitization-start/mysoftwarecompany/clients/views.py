@@ -15,9 +15,27 @@ def create_company(request):
     if request.method == "POST":
         # let's initialize the form with our data from the request
         form = CompanyForm(request.POST)
-
         # check if it's valid
+        if form.is_valid():
+            # path is our valid path.
 
+            # form.save is built in to the form create an item in our
+            # database for us.
+            form.save()
+            # the above is using the cleaned_data to save.
+
+            # the new instance of company is on the form.instance.
+            company = form.instance
+
+            # render the template with our new data here.
+            return render(
+                request,
+                "clients/create_company.html",
+                {
+                    "form": CompanyForm(),
+                    "new_company": company
+                }
+            )
     else:
         form = CompanyForm()
     return render(
