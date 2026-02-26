@@ -54,7 +54,6 @@ def create_company(request):
             {"form": form}
         )
 
-
 # Create the contact form here.
 def contact_us(request):
     # this handles get request and displays the form to the user.
@@ -103,7 +102,6 @@ def company_detail(request, company_id):
     company = get_object_or_404(Company, id=company_id)
 
     return render(request, 'clients/company_detail.html', {'company': company})
-
 
 def employees_search_results(request, company_id):
     # this is going to handle the search query for employees
