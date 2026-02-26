@@ -13,6 +13,28 @@ class CompanyForm(forms.ModelForm):
         # we're not including created_at and updated_at because
         # they're automatically generated.
 
+    # we're going to perform some cross field validation here.
+    def clean(self):
+        # we're going to call clean on the modelform itself.
+        # calling clean on the parent class
+        cleaned_data = super().clean()
+        # list of forbiden words
+        forbidden_words = ["scam", "fraud", "ponzi"]
+
+        # let's get the name and description here
+        name = cleaned_data.get('name')
+        description = cleaned_data.get('description')
+
+        # loop through the words
+        for forbidden_word in forbidden_words:
+            # let's check here if it's in the forbidden words.
+            if (forbidden_word in name.lower() or
+                forbidden_word in description.lower()):
+                    raise forms.ValidationError(
+                        f"'{forbidden_word}' is not allowed to be used."
+                    )
+        # return it.
+        return cleaned_data
 
 class ContactForm(forms.Form):
     name = forms.CharField(max_length=100, required=True)
