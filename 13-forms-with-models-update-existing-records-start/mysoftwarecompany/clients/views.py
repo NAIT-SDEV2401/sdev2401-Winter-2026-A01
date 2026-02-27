@@ -7,12 +7,27 @@ from django.shortcuts import get_object_or_404
 
 # Create your views here.
 from .models import Company, Employee
-from .forms import ContactForm, CompanyForm
+from .forms import ContactForm, CompanyForm, EmployeeForm
 
 # create the company employee view
 # render the company and employee form
 # to a template (don't create the template)
+# pass the form and company to the template context.
+def company_add_employee(request, company_id):
 
+    # request method post we'll do after.
+    company = get_object_or_404(Company, id=company_id)
+    form = EmployeeForm()
+
+
+    return render(
+        request,
+        "clients/add_employee.html",
+        {
+            "form": form,
+            "company": company
+        }
+    )
 
 # new view to update company
 def update_company(request, company_id):
