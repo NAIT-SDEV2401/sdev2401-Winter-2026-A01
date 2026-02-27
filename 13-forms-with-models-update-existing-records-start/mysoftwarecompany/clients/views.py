@@ -19,7 +19,6 @@ def company_add_employee(request, company_id):
 
     if request.method=="POST":
         # create an employee form
-
         form = EmployeeForm(request.POST)
 
         if form.is_valid():
@@ -42,12 +41,9 @@ def company_add_employee(request, company_id):
                 }
             )
 
-
-
     # request method post we'll do after.
     else:
         form = EmployeeForm()
-
 
     return render(
         request,
