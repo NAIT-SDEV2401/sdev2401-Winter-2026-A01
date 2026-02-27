@@ -14,10 +14,39 @@ from .forms import ContactForm, CompanyForm, EmployeeForm
 # to a template (don't create the template)
 # pass the form and company to the template context.
 def company_add_employee(request, company_id):
+    # get the company for both requests
+    company = get_object_or_404(Company, id=company_id)
+
+    if request.method=="POST":
+        # create an employee form
+
+        form = EmployeeForm(request.POST)
+
+        if form.is_valid():
+            # Save the form, but we're not going to
+            # commit it to the database.
+            new_employee = form.save(commit=False)
+            # gives you an instance but does not save
+            # it the db.
+            new_employee.company = company
+            # company is based on the compnay_id of the url.
+            new_employee.save()
+            return render(
+                request,
+                "clients/add_employee.html",
+                {
+                    "form": EmployeeForm(),
+                    "company": company,
+                    "employee": new_employee,
+                    "success": True
+                }
+            )
+
+
 
     # request method post we'll do after.
-    company = get_object_or_404(Company, id=company_id)
-    form = EmployeeForm()
+    else:
+        form = EmployeeForm()
 
 
     return render(
