@@ -11,6 +11,20 @@
             {% for company in companies %}
                 <li class="mb-2">
                     <strong>{{ company.name }}</strong>
+                    <!-- Fix the following urls. -->
+                    <div class="flex">
+                        <div class="ml-auto space-x-2">
+                            <a href="THERIGHTURLHERE" class="px-3 py-1 bg-blue-500 text-white rounded">
+                                View Details
+                            </a>
+                            <a href="THERIGHTURLHERE" class="px-3 py-1 bg-yellow-500 text-white rounded">
+                                Update Company
+                            </a>
+                            <a href="THERIGHTURLHERE" class="px-3 py-1 bg-green-500 text-white rounded">
+                                Add Employee
+                            </a>
+                        <div>
+                    </div>
                     <div>
                         {{company.email}}
                     </div>
