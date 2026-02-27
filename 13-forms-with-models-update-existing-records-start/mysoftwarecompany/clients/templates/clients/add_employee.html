@@ -4,24 +4,27 @@
 <!-- Add all of the form fields! -->
 <div class="max-w-2xl mx-auto">
     <h1 class="text-3xl font-bold underline">
-        Add new employee to COMPANYNAMEHERE
+        Add new employee to {{ company.name }}
     </h1>
 
     <form method="post" class="mt-4">
         <!-- Add the CSRF token for security -->
-
+        {% csrf_token %}
         <!-- Render the form fields -->
+        {% for field in form %}
             <div>
-            <label for="IDFORLABLEHERE" class="block text-sm font-medium text-gray-700">
-                LABELHERE
+            <label for="{{field.id_for_label}}" class="block text-sm font-medium text-gray-700">
+                {{ field.label }}
             </label>
-            FIELDHERE
+            {{ field }}
             <!-- render field errors here.-->
+            {% if field.errors %}
                 <p class="text-sm text-red-500 mt-1">
-                    FIELDERRORHERE
+                    {{ field.errors | striptags }}
                 </p>
-
+            {% endif %}
             </div>
+        {% endfor %}
         <!-- Non field errors -->
         <div class="mb-4 p-4 bg-red-100 text-red-800 border border-red-200 rounded">
             <ul>
