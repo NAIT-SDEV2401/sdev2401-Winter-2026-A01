@@ -1,6 +1,20 @@
 from django import forms
 
-from .models import Company
+from .models import Company, Employee
+
+# 3 mins create an employee form with the proper fields.
+class EmployeeForm(forms.ModelForm):
+    class Meta:
+        model = Employee
+        fields = [
+            'first_name',
+            'last_name',
+            'email',
+            'role'
+        ]
+        # we're not including company
+        # because we're going to get it from the url
+        # in the view
 
 
 class CompanyForm(forms.ModelForm):
