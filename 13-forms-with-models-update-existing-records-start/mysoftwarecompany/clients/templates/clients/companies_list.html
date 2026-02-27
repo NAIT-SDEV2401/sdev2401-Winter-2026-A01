@@ -14,13 +14,13 @@
                     <!-- Fix the following urls. -->
                     <div class="flex">
                         <div class="ml-auto space-x-2">
-                            <a href="THERIGHTURLHERE" class="px-3 py-1 bg-blue-500 text-white rounded">
+                            <a href="{% url 'company_detail' company.id %}" class="px-3 py-1 bg-blue-500 text-white rounded">
                                 View Details
                             </a>
-                            <a href="THERIGHTURLHERE" class="px-3 py-1 bg-yellow-500 text-white rounded">
+                            <a href="{% url 'update_company' company.id %}" class="px-3 py-1 bg-yellow-500 text-white rounded">
                                 Update Company
                             </a>
-                            <a href="THERIGHTURLHERE" class="px-3 py-1 bg-green-500 text-white rounded">
+                            <a href="{% url 'company_add_employee' company.id %}" class="px-3 py-1 bg-green-500 text-white rounded">
                                 Add Employee
                             </a>
                         <div>
