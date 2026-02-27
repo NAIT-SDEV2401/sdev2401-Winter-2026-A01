@@ -9,6 +9,11 @@ from django.shortcuts import get_object_or_404
 from .models import Company, Employee
 from .forms import ContactForm, CompanyForm
 
+# create the company employee view
+# render the company and employee form
+# to a template (don't create the template)
+
+
 # new view to update company
 def update_company(request, company_id):
     company = get_object_or_404(Company, id=company_id)
