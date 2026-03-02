@@ -8,7 +8,7 @@ class User(AbstractUser):
     # a tuple of tuples (lists that do not change.)
     ROLE_CHOICES = (
         ('teacher', "Teacher"),
-        ('teacher', "Student")
+        ('student', "Student")
     )
     role = models.CharField(max_length=10, choices=ROLE_CHOICES)
 
