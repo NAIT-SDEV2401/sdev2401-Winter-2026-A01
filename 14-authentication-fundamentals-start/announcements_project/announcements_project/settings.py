@@ -125,3 +125,6 @@ STATIC_URL = "static/"
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
+# AUTHENTICATION settings
+AUTH_USER_MODEL = "core.User"
+# this is looking in the core module for the "User" in models.py

@@ -7,7 +7,7 @@ from django.contrib.auth.models import AbstractUser
 class User(AbstractUser):
     # a tuple of tuples (lists that do not change.)
     ROLE_CHOICES = (
-        ('teacher', "Teacher")
+        ('teacher', "Teacher"),
         ('teacher', "Student")
     )
     role = models.CharField(max_length=10, choices=ROLE_CHOICES)
