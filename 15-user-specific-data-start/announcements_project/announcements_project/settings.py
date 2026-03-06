@@ -129,7 +129,7 @@ DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 # as it's not created yet.
 AUTH_USER_MODEL = 'core.User'
 
-
+# built in to the auth.
 LOGIN_REDIRECT_URL = '/announcements/'  # after login original LOGIN_REDIRECT_URL = '/'
 LOGOUT_REDIRECT_URL = '/accounts/login/'  # after logout
 LOGIN_URL = '/accounts/login/' #
