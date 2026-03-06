@@ -8,7 +8,8 @@ from core.permissions import is_teacher
 
 # Create your views here.
 from .models import Announcement
-
+# import the announcement form
+from .forms import AnnouncementForm
 
 @login_required
 def announcement_list(request):
@@ -19,11 +20,28 @@ def announcement_list(request):
         {'announcements': announcements}
     )
 
-
 @login_required
 @user_passes_test(is_teacher)
 def create_announcement(request):
     # request.user is on every request.
     # only teachers can create announcements
     # students cannot.
-    return render(request, 'announcements/create_announcement.html', {})
+    if request.method == "POST":
+        # create the form instance
+        form = AnnouncementForm(request.POST)
+        if form.is_valid():
+            # get an instance that's not saved
+            # to the db yet.
+            announcement = form.save(commit=False)
+            # assign user to created_by field
+            # on announcement instance and save.
+            announcement.created_by = request.user
+            announcement.save()
+
+            return redirect('announcement_list')
+    else:
+        form = AnnouncementForm()
+    return render(request,
+        'announcements/create_announcement.html',
+        {"form": form}
+    )
