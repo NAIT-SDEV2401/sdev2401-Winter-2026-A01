@@ -1,7 +1,8 @@
 from django.shortcuts import render, redirect
 # import login_required decorator
 from django.contrib.auth.decorators import (
-    login_required, user_passes_test)
+    login_required, user_passes_test,
+    permission_required)
 
 # import the permission from core.
 from core.permissions import is_teacher
@@ -20,8 +21,10 @@ def announcement_list(request):
         {'announcements': announcements}
     )
 
+# @user_passes_test(is_teacher)
 @login_required
-@user_passes_test(is_teacher)
+@permission_required('announcements.add_announcement', # permission
+                     raise_exception=True) # raise a 403 page.
 def create_announcement(request):
     # request.user is on every request.
     # only teachers can create announcements
