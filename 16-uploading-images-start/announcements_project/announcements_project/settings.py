@@ -138,3 +138,8 @@ LOGIN_REDIRECT_URL = '/announcements/'  # after login original LOGIN_REDIRECT_UR
 LOGOUT_REDIRECT_URL = '/accounts/login/'  # after logout
 LOGIN_URL = '/accounts/login/' #
 
+# Let's add some media settings for user uploaded items.
+# this is going to much different in production
+# and most times you'll want to ignore this folder in ".gitignore"
+MEDIA_URL = '/media/' # this going to be where the files are served on our webserver.
+MEDIA_ROOT = BASE_DIR / 'media' # this is going to be where they're stored locally.
