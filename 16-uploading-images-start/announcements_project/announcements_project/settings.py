@@ -41,6 +41,8 @@ INSTALLED_APPS = [
     # custom apps
     "core",
     "announcements",
+    # let's include our new app here.
+    "profiles"
 ]
 
 MIDDLEWARE = [
