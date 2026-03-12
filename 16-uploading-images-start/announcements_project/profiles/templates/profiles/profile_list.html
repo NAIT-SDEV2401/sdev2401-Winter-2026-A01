@@ -15,9 +15,11 @@
 
         {% for profile in profiles %}
         <li class="flex gap-x-4 py-5">
-
+            <!-- When using media in an image field
+             or file field our can use .url on the property
+              -->
             <img
-              src="URL HERE"
+              src="{{ profile.profile_picture.url }}"
               alt="{{ profile.user.username }}'s profile picture"
               height="48"
               width="48"
