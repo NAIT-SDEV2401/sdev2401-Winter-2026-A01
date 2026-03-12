@@ -12,7 +12,9 @@
     </h1>
   </div>
 
-  <form method="post" >
+  <!-- The enctype tells the server the encoding
+   multipart form is the default for adding files. -->
+  <form method="post" enctype="multipart/form-data">
     {% csrf_token %}
     {% for field in form %}
       <div>

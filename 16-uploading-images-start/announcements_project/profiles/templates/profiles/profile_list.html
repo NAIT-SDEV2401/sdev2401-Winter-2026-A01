@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Profile List{% endblock %}
+
+{% block content %}
+<div class="max-w-2xl mx-auto px-4 md:px-0">
+
+  <div class="flex justify-between items-center mb-4">
+        <h1 class="text-3xl font-bold underline">
+            Profile List
+        </h1>
+      </div>
+      <ul role="list" class="divide-y divide-gray-100 dark:divide-white/5">
+
+        <li class="flex gap-x-4 py-5">
+
+            <img
+              src="URL HERE"
+              alt="USERNAME HERE's profile picture"
+              height="48"
+              width="48"
+              />
+            <div class="min-w-0">
+              <p class="text-sm/6 font-semibold text-gray-900 dark:text-white">
+                USERNAME HERE
+              </p>
+              <p class="mt-1 truncate text-xs/5 text-gray-500 dark:text-gray-400">
+                BIOHERE
+              </p>
+            </div>
+        </li>
+        <!-- if empty -->
+        <li>No profiles available.</li>
+
+      </ul>
+    </div>
+</div>
+{% endblock %}

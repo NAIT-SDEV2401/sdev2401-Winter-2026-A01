@@ -6,6 +6,24 @@ from .forms import ProfileForm
 from .models import Profile
 
 
+# I want you to
+# create the view to list all profiles
+@login_required
+def profile_list(request):
+    profiles = Profile.objects.all()
+
+    return render(
+        request,
+        "profiles/profile_list.html",
+        {"profiles": profiles},
+    )
+
+
+# create the urls
+# fix the template tags to loop through
+# profiles in the template.
+
+
 @login_required
 def update_profile(request):
     # with the one to one mapping it will force the db
@@ -15,10 +33,9 @@ def update_profile(request):
     )
 
     if request.method == "POST":
-        breakpoint()
         form = ProfileForm(
             request.POST,
-            request.FILES,
+            request.FILES,  # right encoding.
             instance=profile,
         )
 
