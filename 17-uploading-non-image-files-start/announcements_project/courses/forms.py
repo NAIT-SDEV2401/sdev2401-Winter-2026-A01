@@ -13,8 +13,16 @@ class BulkAssignmentUploadForm(forms.Form):
 
     def clean_csv_file(self):
         # we're goign to get the csv data
-        #
+        file = self.cleaned_data.get("csv_file")
         # check that the file ending is correct (.csv)
-        #
+        # we can do this by checking file.name
+        if not file.name.endswith(".csv"):
+            raise forms.ValidationError(
+                "Please Upload a CSV file",
+            )
+
         # check that the content type is correct as well.
         #
+
+        # success
+        return file
