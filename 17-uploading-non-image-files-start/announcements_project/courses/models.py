@@ -1,5 +1,10 @@
+import csv
+
 from django.db import models
 from django.conf import settings
+
+# using time in django.
+from django.utils import timezone
 
 
 # create an assignment model
@@ -16,6 +21,18 @@ class Assignment(models.Model):
     def __str__(self):
         return self.title
 
+    # cls is Assignment class itself.
+    @classmethod
+    def create_assignments_from_file(cls, csv_file, owner):
+        # decode the file
+
+        # use the csv dict reader to read this.
+
+        # loop through the rows
+
+        # create the items.
+
+        # return assignments
 
 # create a submission model
 # - assignment: foreign key (use cascade)
