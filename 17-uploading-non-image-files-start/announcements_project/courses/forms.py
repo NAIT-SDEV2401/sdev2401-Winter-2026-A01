@@ -16,13 +16,17 @@ class BulkAssignmentUploadForm(forms.Form):
         file = self.cleaned_data.get("csv_file")
         # check that the file ending is correct (.csv)
         # we can do this by checking file.name
-        if not file.name.endswith(".csv"):
+        if not (file.name.endswith(".csv") or file.name.endswith(".xlsx")):
             raise forms.ValidationError(
                 "Please Upload a CSV file",
             )
-        breakpoint()
+
         # check that the content type is correct as well.
-        if file.content_type not in ["text/csv", "application/vnd.ms-excel"]:
+        if file.content_type not in [
+            "text/csv",
+            "application/vnd.ms-excel",
+            "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+        ]:
             raise forms.ValidationError("File Type not a csv")
 
         # success

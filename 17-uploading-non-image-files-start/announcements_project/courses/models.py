@@ -25,6 +25,7 @@ class Assignment(models.Model):
     @classmethod
     def create_assignments_from_file(cls, csv_file, owner):
         # decode the file
+        breakpoint()
         # ensure that you add you .splitlines()
         decoded_file = csv_file.read().decode("utf-8").splitlines()
         # use the csv dict reader to read this.

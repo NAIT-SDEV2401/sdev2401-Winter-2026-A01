@@ -4,6 +4,11 @@ from django.shortcuts import render
 from .forms import BulkAssignmentUploadForm
 from .models import Assignment
 
+# Todo.
+# Create the view to list all assignments
+# Create a view to submit an assignment as a student
+# Create a view to see all submissions
+
 
 # make the bulk_assignment_upload view
 # using the form we've created.
