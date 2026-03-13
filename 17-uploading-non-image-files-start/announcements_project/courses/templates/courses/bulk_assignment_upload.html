@@ -11,6 +11,17 @@
       Bulk Assignment Upload
     </h1>
   </div>
+  <!-- Fix the below! -->
+  <!-- if success -->
+  <div class="mb-4 p-4 bg-green-100 text-green-800 border border-green-200 rounded">
+    <p>Following Assignments uploaded successfully!</p>
+    <ul>
+        <!-- loop through assignemtns -->
+        <li>ASSIGNMENT TITLE HERE - Due: DUE DATE HERE</li>
+
+
+    </ul>
+  </div>
   <!-- IMPORTANT: You need enctype="multipart/form-data -->
   <form method="post" enctype="multipart/form-data">
     {% csrf_token %}
