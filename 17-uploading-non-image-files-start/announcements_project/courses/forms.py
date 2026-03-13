@@ -20,9 +20,9 @@ class BulkAssignmentUploadForm(forms.Form):
             raise forms.ValidationError(
                 "Please Upload a CSV file",
             )
-
+        breakpoint()
         # check that the content type is correct as well.
-        if file.content_type != "text/csv":
+        if file.content_type not in ["text/csv", "application/vnd.ms-excel"]:
             raise forms.ValidationError("File Type not a csv")
 
         # success
