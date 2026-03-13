@@ -15,7 +15,7 @@ def bulk_assignment_upload(request):
         )
         if form.is_valid():
             csv_file = form.cleaned_data.get("csv_file")
-
+            breakpoint()
             # below we're going to handle the parsing of
             # the data.
 
