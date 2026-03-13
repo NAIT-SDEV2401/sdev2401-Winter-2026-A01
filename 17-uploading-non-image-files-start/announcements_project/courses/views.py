@@ -25,6 +25,7 @@ def bulk_assignment_upload(request):
                 csv_file=csv_file,
                 owner=request.user,
             )
+            success = True
 
     else:
         form = BulkAssignmentUploadForm()
