@@ -25,14 +25,18 @@ class Assignment(models.Model):
     @classmethod
     def create_assignments_from_file(cls, csv_file, owner):
         # decode the file
-
+        decoded_file = csv_file.read().decode("utf-8")
         # use the csv dict reader to read this.
+        reader = csv.DictReader(decoded_file)
+        assignments = []
 
         # loop through the rows
-
+        for row in reader:
+            breakpoint()
         # create the items.
 
         # return assignments
+
 
 # create a submission model
 # - assignment: foreign key (use cascade)
