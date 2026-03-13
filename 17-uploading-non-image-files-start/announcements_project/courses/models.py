@@ -25,17 +25,28 @@ class Assignment(models.Model):
     @classmethod
     def create_assignments_from_file(cls, csv_file, owner):
         # decode the file
-        decoded_file = csv_file.read().decode("utf-8")
+        # ensure that you add you .splitlines()
+        decoded_file = csv_file.read().decode("utf-8").splitlines()
         # use the csv dict reader to read this.
         reader = csv.DictReader(decoded_file)
         assignments = []
 
         # loop through the rows
+        # each row will look like this:
+        # {'title': 'Assignment 1', 'description': 'Introduction to Python', 'date': '2026-02-10', 'time': '09:00'}
         for row in reader:
-            breakpoint()
-        # create the items.
+            # create the assignment and store it.
+            new_assignment, created = Assignment.objects.get_or_create(
+                title=row.get("title"),
+                description=row.get("description"),
+                due_date=timezone.now(),
+                owner=owner,
+            )
+            # append to assignemtns
+            if created:
+                assignments.append(new_assignment)
 
-        # return assignments
+        return assignments
 
 
 # create a submission model
