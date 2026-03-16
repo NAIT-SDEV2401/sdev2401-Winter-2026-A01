@@ -5,6 +5,7 @@ import csv
 
 from django.core.management.base import BaseCommand
 
+from courses.models import Course
 
 class Command(BaseCommand):
     # this will be the help text if a user doesn't know how
