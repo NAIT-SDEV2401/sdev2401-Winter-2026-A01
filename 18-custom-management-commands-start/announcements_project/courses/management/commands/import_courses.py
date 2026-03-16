@@ -13,7 +13,7 @@ class Command(BaseCommand):
 
     # we might be uploading various courses
     # add an argument for the path of the csv file.
-    def add_argument(self, parser):
+    def add_arguments(self, parser):
         parser.add_argument(
             "csv_file",  # arguemnt name
             type=str,  # this will be a string
@@ -29,4 +29,5 @@ class Command(BaseCommand):
     # number of arguments.
     # Note: the function below is what will be executed
     def handle(self, *args, **kwargs):
+        breakpoint()
         print("Hello from my command!")
