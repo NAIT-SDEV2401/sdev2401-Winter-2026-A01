@@ -49,12 +49,14 @@ class Command(BaseCommand):
                 # {'title': '...', 'description': '...'}
 
                 # let's use get_or_create to import these items.
-                course, created = Course.objects.get_or_create(
+                _, created = Course.objects.get_or_create(
                     title=row.get("title"),
                     description=row.get("description"),
                 )
                 if created:
                     count += 1
+                # note here you can handle the case if the courses
+                # are already created.
 
             self.stdout.write(
                 self.style.SUCCESS(
