@@ -7,6 +7,7 @@ from django.core.management.base import BaseCommand
 
 from courses.models import Course
 
+
 class Command(BaseCommand):
     # this will be the help text if a user doesn't know how
     # what this command does.
@@ -42,9 +43,21 @@ class Command(BaseCommand):
 
         with open(csv_file, newline="") as file:
             reader = csv.DictReader(file)
+            count = 0
             for row in reader:
                 # each row will look like
                 # {'title': '...', 'description': '...'}
 
                 # let's use get_or_create to import these items.
+                course, created = Course.objects.get_or_create(
+                    title=row.get("title"),
+                    description=row.get("description"),
+                )
+                if created:
+                    count += 1
 
+            self.stdout.write(
+                self.style.SUCCESS(
+                    f"Successfully imported {count} courses",
+                )
+            )
