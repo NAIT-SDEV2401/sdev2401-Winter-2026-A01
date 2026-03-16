@@ -38,7 +38,7 @@ class Command(BaseCommand):
 
             self.stdout.write(
                 self.style.SUCCESS(
-                    f"Successfully exported {courses.count} to {output_file}"
+                    f"Successfully exported {courses.count()} to {output_file}"
                 )
             )
 
