@@ -29,5 +29,21 @@ class Command(BaseCommand):
     # number of arguments.
     # Note: the function below is what will be executed
     def handle(self, *args, **kwargs):
-        breakpoint()
-        print("Hello from my command!")
+        # import the csv
+        csv_file = kwargs.get("csv_file")
+        # create course items
+        if not csv_file:
+            self.stdout.write(
+                self.style.ERROR(
+                    "Please provide a csv",
+                ),
+            )
+
+        with open(csv_file, newline="") as file:
+            reader = csv.DictReader(file)
+            for row in reader:
+                # each row will look like
+                # {'title': '...', 'description': '...'}
+
+                # let's use get_or_create to import these items.
+
