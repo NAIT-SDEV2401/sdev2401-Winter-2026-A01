@@ -32,4 +32,13 @@ class Command(BaseCommand):
                 recipient_list=[to_email],
             )
             # update each submission model
+            submission.instructor_notified = True
+            submission.save()
             # say that the instructor has been notified.
+        # let's use verbosity
+        if kwargs.get("verbosity") > 1:
+            self.stdout.write(
+                self.style.SUCCESS(
+                    f"Successfully notified insutructors about {count} submissions"
+                )
+            )
