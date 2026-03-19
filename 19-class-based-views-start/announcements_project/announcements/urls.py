@@ -1,5 +1,9 @@
 from django.urls import path
-from .views import AnnouncementListView, announcement_list, create_announcement
+from .views import (
+    AnnouncementListView,
+    announcement_list,
+    create_announcement,
+)
 
 urlpatterns = [
     # the class based url view.
