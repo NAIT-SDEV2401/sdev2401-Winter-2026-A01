@@ -1,5 +1,7 @@
+from django.views import View
 from django.shortcuts import render
 from django.contrib.auth.decorators import login_required
+from django.utils.decorators import method_decorator
 
 from .forms import BulkAssignmentUploadForm
 from .models import Assignment
@@ -8,6 +10,7 @@ from .models import Assignment
 # update the urls.
 
 
+@method_decorator(login_required, name="dispatch")
 class AssignmentListView(View):
     template_name = "courses/assignment_list.html"
 
