@@ -6,12 +6,19 @@ from .views import (
     assignment_submission,
     AssignmentListView,
     AssignmentSubmissionView,
+    BulkAssignmentUploadForm,
 )
 
 urlpatterns = [
     path(
-        "bulk-assignment-upload/", bulk_assignment_upload, name="bulk_assignment_upload"
+        "bulk-assignment-upload/",
+        BulkAssignmentUploadForm.as_view(),
+        name="bulk_assignment_upload",
     ),
+    # FBV
+    # path(
+    #     "bulk-assignment-upload/", bulk_assignment_upload, name="bulk_assignment_upload"
+    # ),
     # CBV
     path(
         "assignments/",
