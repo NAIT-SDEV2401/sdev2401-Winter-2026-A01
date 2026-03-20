@@ -48,6 +48,11 @@ def announcement_list(request):
     )
 
 
+# rewrite this below as a class based views
+# add the url
+# refer to the slides if you're confused.
+
+
 # this will restrict access to only users that pass the is_teacher test
 # it will redirect to the login page if the user does not have permission.
 @login_required
