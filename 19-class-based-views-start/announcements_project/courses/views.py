@@ -67,6 +67,27 @@ def assignment_submission(request, assignment_id):
     )
 
 
+class BulkAssignmentUploadView(View):
+    template_name = "courses/bulk_assignment_upload.html"
+    form_class = BulkAssignmentUploadForm
+
+    def get(self, request):
+        form = self.form_class()
+
+        return render(
+            request,
+            "courses/bulk_assignment_upload.html",
+            {
+                "form": form,
+                "success": False,
+                "assignments": [],
+            },
+        )
+
+    def post(self, request):
+        pass
+
+
 # Create your views here.
 @login_required
 def bulk_assignment_upload(request):
