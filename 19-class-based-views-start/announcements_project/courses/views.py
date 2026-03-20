@@ -67,6 +67,7 @@ def assignment_submission(request, assignment_id):
     )
 
 
+@method_decorator(login_required, name="dispatch")
 class BulkAssignmentUploadView(View):
     template_name = "courses/bulk_assignment_upload.html"
     form_class = BulkAssignmentUploadForm
