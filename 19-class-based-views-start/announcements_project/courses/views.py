@@ -38,6 +38,22 @@ def assignment_list(request):
     )
 
 
+class AssignmentSubmissionView(View):
+    template_name = "courses/assignment_submission.html"
+
+    def get(self, request, assignment_id):
+        # note: we created the form part in class
+        # look at previous notes to fix this
+        # submission view woo.
+        return render(
+            request,
+            self.template_name,
+            {
+                "assignment_id": assignment_id,
+            },
+        )
+
+
 @login_required
 def assignment_submission(request, assignment_id):
     # Placeholder for submission view
