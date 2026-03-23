@@ -17,6 +17,8 @@ from .forms import AnnouncementForm
 from django.contrib.auth.mixins import LoginRequiredMixin
 from core.mixins import IsTeacherRoleMixin
 
+from django.views.generic import ListView
+
 
 # our test function here.
 def is_teacher(user):
@@ -24,12 +26,24 @@ def is_teacher(user):
     return user.role == "teacher"
 
 
-class AnnouncementListView(LoginRequiredMixin, View):
+# let's use a ListView generic
+class AnnouncementListView(LoginRequiredMixin, ListView):
+    model = Announcement
     template_name = "announcements/announcement_list.html"
+    # sepecif the context_object_name for the template
+    context_object_name = "announcements"
+    ordering = "-created_at"  # gets the most recent first.
 
-    def get(self, request):
-        announcements = Announcement.objects.all().order_by("-created_at")
-        return render(request, self.template_name, {"announcements": announcements})
+
+# the class above does the same as below.
+
+# our view.
+# class AnnouncementListView(LoginRequiredMixin, View):
+#     template_name = "announcements/announcement_list.html"
+
+#     def get(self, request):
+#         announcements = Announcement.objects.all().order_by("-created_at")
+#         return render(request, self.template_name, {"announcements": announcements})
 
 
 # below we're using multiple mixins

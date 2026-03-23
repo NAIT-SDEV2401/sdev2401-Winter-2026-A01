@@ -20,7 +20,8 @@ class HomePageView(CurrentTimeMixin, TemplateView):
     def get_context_data(self, **kwargs):
         # calling get_context_data from the super class.
         context = super().get_context_data(**kwargs)
-        breakpoint()
+        # note our get_context_data from our CurrentTimeMixin is
+        # being called before.
         context["title"] = "Super LMS"
         context["description"] = "Our awesome lms system."
         return context

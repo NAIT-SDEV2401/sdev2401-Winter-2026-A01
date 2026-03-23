@@ -1,6 +1,7 @@
 # docs here: https://docs.djangoproject.com/en/5.2/topics/auth/default/#django.contrib.auth.mixins.UserPassesTestMixin
 from django.contrib.auth.mixins import UserPassesTestMixin
 from django.utils import timezone
+from datetime import datetime
 
 
 # we're goign to create a class that we can import rather than
@@ -26,5 +27,10 @@ class CurrentTimeMixin:
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         # add the time to the context
-        context["time"] = timezone.now()
+        # there's a whole bunch of timezone settings that you can modify
+
+        # the server timezone UTC
+        # context["time"] = timezone.now()
+        # below uses the time of now
+        context["time"] = datetime.now()
         return context
