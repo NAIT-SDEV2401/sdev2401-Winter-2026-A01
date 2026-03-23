@@ -27,6 +27,7 @@ def is_teacher(user):
 
 
 # let's use a ListView generic
+# docs: https://docs.djangoproject.com/en/5.2/ref/class-based-views/generic-display/#listview
 class AnnouncementListView(LoginRequiredMixin, ListView):
     model = Announcement
     template_name = "announcements/announcement_list.html"
@@ -45,26 +46,28 @@ class AnnouncementListView(LoginRequiredMixin, ListView):
 #         announcements = Announcement.objects.all().order_by("-created_at")
 #         return render(request, self.template_name, {"announcements": announcements})
 
+# let's use a form view
+
 
 # below we're using multiple mixins
 # to achieve the same functionality as before.
-class CreateAnnouncementView(
-    LoginRequiredMixin,
-    IsTeacherRoleMixin,
-    View,
-):
-    template_name = "announcements/create_announcement.html"
-    form_class = AnnouncementForm
+# class CreateAnnouncementView(
+#     LoginRequiredMixin,
+#     IsTeacherRoleMixin,
+#     View,
+# ):
+#     template_name = "announcements/create_announcement.html"
+#     form_class = AnnouncementForm
 
-    def get(self, request, *args, **kwargs):
-        form = self.form_class()
-        return render(request, self.template_name, {"form": form})
+#     def get(self, request, *args, **kwargs):
+#         form = self.form_class()
+#         return render(request, self.template_name, {"form": form})
 
-    def post(self, request, *args, **kwargs):
-        form = self.form_class(request.POST)
-        if form.is_valid():
-            announcement = form.save(commit=False)
-            announcement.created_by = request.user
-            announcement.save()
-            return redirect("announcement_list")
-        return render(request, self.template_name, {"form": form})
+#     def post(self, request, *args, **kwargs):
+#         form = self.form_class(request.POST)
+#         if form.is_valid():
+#             announcement = form.save(commit=False)
+#             announcement.created_by = request.user
+#             announcement.save()
+#             return redirect("announcement_list")
+#         return render(request, self.template_name, {"form": form})
