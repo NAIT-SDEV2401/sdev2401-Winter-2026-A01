@@ -14,6 +14,7 @@ from .models import Exercise
 # create our apiview class.
 class ExerciseAPIView(APIView):
 
+    # get from the database.
     def get_queryset(self):
         return Exercise.objects.all()
 
@@ -21,4 +22,12 @@ class ExerciseAPIView(APIView):
     def get(self, request):
         # APIView expect a function called
         # get_queryset, how to fetch from the DB.
-
+        exercises = self.get_queryset()
+        # we're going serialize this data
+        # note they will be many!
+        serializer = ExerciseSerializer(
+            exercises,
+            many=True,
+        )
+        # return a response
+        return Response(serializer.data)
