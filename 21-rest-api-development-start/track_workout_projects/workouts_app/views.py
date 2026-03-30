@@ -31,7 +31,7 @@ class ExerciseAPIView(APIView):
             serializer = ExerciseSerializer(exercise)
             # note not many is true because it's a single instance
             # return early.
-            return Response(serializer.validated_data)
+            return Response(serializer.data)
 
         # list view
         # APIView expect a function called
