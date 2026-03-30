@@ -47,3 +47,5 @@ class ExerciseSerializer(serializers.Serializer):
             )
 
         return value
+
+    # looking above this looks exactly like form

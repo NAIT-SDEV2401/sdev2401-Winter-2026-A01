@@ -1,3 +1,5 @@
+from django.shortcuts import get_object_or_404
+
 # import the APIView which will
 # behave a lot like a class based view.
 from rest_framework.views import APIView
@@ -19,7 +21,19 @@ class ExerciseAPIView(APIView):
         return Exercise.objects.all()
 
     # create the get just like we did in the past.
-    def get(self, request):
+    # extend this to allow the detail get as well.
+    def get(self, request, id=None):
+        # a detail view
+        if id is not None:
+            # get from db.
+            exercise = get_object_or_404(Exercise, id=id)
+            # serialize the single instance
+            serializer = ExerciseSerializer(exercise)
+            # note not many is true because it's a single instance
+            # return early.
+            return Response(serializer.data)
+
+        # list view
         # APIView expect a function called
         # get_queryset, how to fetch from the DB.
         exercises = self.get_queryset()
