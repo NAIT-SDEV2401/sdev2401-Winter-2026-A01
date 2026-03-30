@@ -33,3 +33,17 @@ class ExerciseSerializer(serializers.Serializer):
         return Exercise.objects.create(
             **validate_data,
         )
+
+    # we're going to create some validation on the name
+    def validate_name(self, value):
+        INVALID_NAMES = [
+            "eating",
+            "sitting",
+            "lying down",
+        ]  # you could fetch this (or )
+        if value in INVALID_NAMES:
+            raise serializers.ValidationError(
+                "Exercise name is invalid, for obvious reasons."
+            )
+
+        return value
