@@ -70,11 +70,13 @@ class ExerciseAPIView(APIView):
 
     # put (full update)
     def put(self, request, id):
-        pass
+        # a full update
+        return self.update(request, id, partial=False)
 
     # patch (partial update)
     def patch(self, request, id):
-        pass
+        # only modifies a part.
+        return self.update(request, id, partial=True)
 
     # create a post request.
     def post(self, request):
