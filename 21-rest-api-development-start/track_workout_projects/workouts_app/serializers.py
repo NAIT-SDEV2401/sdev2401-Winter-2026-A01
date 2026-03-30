@@ -34,6 +34,17 @@ class ExerciseSerializer(serializers.Serializer):
             **validate_data,
         )
 
+    def update(self, instance, validated_data):
+        # the instance is the model instance to update
+        # will get the new data or stay the same.
+        instance.name = validated_data.get("name", instance.name)
+        instance.exercise_type = validated_data.get(
+            "exercise_type", instance.exercise_type
+        )
+        # save the instance
+        instance.save()
+        return instance
+
     # we're going to create some validation on the name
     def validate_name(self, value):
         INVALID_NAMES = [

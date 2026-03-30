@@ -31,7 +31,7 @@ class ExerciseAPIView(APIView):
             serializer = ExerciseSerializer(exercise)
             # note not many is true because it's a single instance
             # return early.
-            return Response(serializer.data)
+            return Response(serializer.validated_data)
 
         # list view
         # APIView expect a function called
@@ -45,6 +45,24 @@ class ExerciseAPIView(APIView):
         )
         # return a response
         return Response(serializer.data)
+
+    # two requests to handle:put and patch note they need the id of the item that
+    # they want to change.
+    # we're goign to make a single function that will handle both.
+    def update(self, request, id, partial=False):
+        # retrieve the object
+        # create serializer (we're going to pass an instance.)
+        # validate it.
+        # save it (on the serializer.)
+        # give a response
+
+    # put (full update)
+    def put(self, request, id):
+        pass
+
+    # patch (partial update)
+    def patch(self, request, id):
+        pass
 
     # create a post request.
     def post(self, request):
