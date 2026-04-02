@@ -2,11 +2,15 @@ from django.shortcuts import get_object_or_404
 from rest_framework.views import APIView
 from rest_framework.response import Response
 
-from .serializers import ExerciseSerializer
-from .models import Exercise
+# import viewsets from rest_framework
+from rest_framework import viewsets
+
+from .serializers import ExerciseSerializer, WorkoutSerializer
+from .models import Exercise, Workout
 
 
 class ExerciseAPIView(APIView):
+
     def get(self, request, id=None):
         # detail view
         if id:
@@ -25,7 +29,6 @@ class ExerciseAPIView(APIView):
             # this will call the create method internally.
             return Response(ExerciseSerializer(exercise).data, status=201)
         return Response(serializer.errors, status=400)
-
 
     def update(self, request, id, partial=False):
         exercise = get_object_or_404(Exercise, id=id)
@@ -46,3 +49,16 @@ class ExerciseAPIView(APIView):
         exercise = get_object_or_404(Exercise, id=id)
         exercise.delete()
         return Response(status=204)
+
+
+# this is going to create the api endpoints
+# for get, put, post,patch,delete
+# but the the methods to override if you want to
+# customize them are going to be
+# list, create, retrieve, update, partial_update, destroy
+class WorkoutViewSet(viewsets.ModelViewSet):
+    # we need to specify at least two things
+    # queryset (what to get from the db.)
+    queryset = Workout.objects.all()
+    # the model serializer.
+    serializer_class = WorkoutSerializer
