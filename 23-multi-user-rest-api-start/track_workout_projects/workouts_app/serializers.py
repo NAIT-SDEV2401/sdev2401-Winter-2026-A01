@@ -53,3 +53,19 @@ class WorkoutLogReadOnlySerializer(serializers.ModelSerializer):
             "weight_kg",
             "time",
         ]
+
+
+class WorkLogCreateUpdateSerializer(serializers.ModelSerializer):
+
+    class Meta:
+        model = WorkoutLog
+        fields = [
+            # foreign keys that we're going to override
+            "workout",  # this will only be the id
+            "exercise",  # this will only be the id
+            # plain old fields
+            "sets",
+            "reps",
+            "weight_kg",
+            "time",
+        ]
