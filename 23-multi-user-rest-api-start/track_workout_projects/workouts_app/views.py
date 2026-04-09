@@ -101,3 +101,29 @@ class WorkoutLogAPIView(APIView):
             many=True,  # queryset (many items from the db)
         )
         return Response(serializer.data)
+
+    # for a post I want you folks to use the get serializer class to deserialize the data
+    # but I want you use the readonly serializer on response.
+    def post(self, request):
+        # just like we have in the past we're going to get the serializer class
+        # and check if it's valid.
+        serializer = self.get_serializer_class()(
+            data=request.data  # raw data from the request
+        )
+        if serializer.is_valid():  # cleaning a validation
+            # create a work out log instance
+            workout_log = serializer.save()
+
+            # we're going to use this instance in a read only serializer
+            # returns more detailed data than what you sent.
+            return Response(
+                WorkoutLogReadOnlySerializer(
+                    workout_log
+                ).data,  # our detailed representation
+                status=201,  # status for created
+            )
+
+        return Response(
+            serializer.errors,  # defined on the is_valid method
+            status=400,  # bad request.
+        )

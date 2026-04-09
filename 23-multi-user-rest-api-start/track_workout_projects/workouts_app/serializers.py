@@ -22,6 +22,7 @@ class ExerciseSerializer(serializers.Serializer):
             )
         return value
 
+    # these methods are called by the save method.
     def create(self, validated_data):
         return Exercise.objects.create(**validated_data)
 
@@ -69,3 +70,7 @@ class WorkLogCreateUpdateSerializer(serializers.ModelSerializer):
             "weight_kg",
             "time",
         ]
+
+    # note: the save, create, update methods
+    # are created automatically because it's part
+    # of the ModelSerializer class.
