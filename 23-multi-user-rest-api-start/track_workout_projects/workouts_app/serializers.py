@@ -6,7 +6,8 @@ from .models import Exercise, Workout
 class WorkoutSerializer(serializers.ModelSerializer):
     class Meta:
         model = Workout
-        fields = ['id', 'title', 'date']
+        fields = ["id", "title", "date"]
+
 
 class ExerciseSerializer(serializers.Serializer):
     id = serializers.IntegerField(read_only=True)
@@ -16,16 +17,25 @@ class ExerciseSerializer(serializers.Serializer):
     def validate_name(self, value):
         INVALID_EXERCISE_NAMES = ["sitting", "lying down"]
         if value in INVALID_EXERCISE_NAMES:
-            raise serializers.ValidationError("Exercise name cannot be 'sitting' or 'lying down'.")
+            raise serializers.ValidationError(
+                "Exercise name cannot be 'sitting' or 'lying down'."
+            )
         return value
 
     def create(self, validated_data):
         return Exercise.objects.create(**validated_data)
 
     def update(self, instance, validated_data):
-        instance.name = validated_data.get('name', instance.name)
-        instance.exercise_type = validated_data.get('exercise_type', instance.exercise_type)
+        instance.name = validated_data.get("name", instance.name)
+        instance.exercise_type = validated_data.get(
+            "exercise_type", instance.exercise_type
+        )
         instance.save()
         return instance
 
 
+class WorkoutLogReadOnlySerializer(serializers.ModelSerializer):
+    # I want you to create the meta
+    # I want you to serialize the exercise and workout using
+    # the existing serializers.
+    pass
