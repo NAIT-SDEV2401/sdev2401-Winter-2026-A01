@@ -1,6 +1,6 @@
 from rest_framework import serializers
 
-from .models import Exercise, Workout
+from .models import Exercise, Workout, WorkoutLog
 
 
 class WorkoutSerializer(serializers.ModelSerializer):
@@ -38,4 +38,13 @@ class WorkoutLogReadOnlySerializer(serializers.ModelSerializer):
     # I want you to create the meta
     # I want you to serialize the exercise and workout using
     # the existing serializers.
-    pass
+    class Meta:
+        model = WorkoutLog
+        fields = [
+            "workout",
+            "exercise",
+            "sets",
+            "reps",
+            "weight_kg",
+            "time",
+        ]
