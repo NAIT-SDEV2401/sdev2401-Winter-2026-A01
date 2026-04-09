@@ -35,14 +35,19 @@ class ExerciseSerializer(serializers.Serializer):
 
 
 class WorkoutLogReadOnlySerializer(serializers.ModelSerializer):
+    workout = WorkoutSerializer(read_only=True)
+    exercise = ExerciseSerializer(read_only=True)
+
     # I want you to create the meta
     # I want you to serialize the exercise and workout using
     # the existing serializers.
     class Meta:
         model = WorkoutLog
         fields = [
+            # foreign keys that we're going to override
             "workout",
             "exercise",
+            # plain old fields
             "sets",
             "reps",
             "weight_kg",
