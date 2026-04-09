@@ -5,8 +5,14 @@ from rest_framework.response import Response
 from rest_framework.permissions import IsAuthenticated
 
 
-from .serializers import ExerciseSerializer, WorkoutSerializer
-from .models import Exercise, Workout
+from .serializers import (
+    ExerciseSerializer,
+    WorkoutSerializer,
+    WorkLogCreateUpdateSerializer,
+    WorkoutLogReadOnlySerializer,
+)
+from .models import Exercise, Workout, WorkoutLog
+
 
 class WorkoutViewSet(viewsets.ModelViewSet):
     permission_classes = [IsAuthenticated]
@@ -53,3 +59,22 @@ class ExerciseAPIView(APIView):
         exercise = get_object_or_404(Exercise, id=id)
         exercise.delete()
         return Response(status=204)
+
+
+class WorkLogAPIVIew(APIView):
+    # authenticated users only
+    permission_classes = [IsAuthenticated]
+
+    # we can override the default value of a
+    # serializer class with a method named
+    # get_serializer_class
+    def get_serializer_class(self):
+        if self.request.method in ["POST", "PUT", "PATCH"]:
+            return WorkLogCreateUpdateSerializer
+        # for get and other methods
+        return WorkoutLogReadOnlySerializer
+
+    # we are overriding the queryset vlaue
+    # with a get_querset method
+    def get_queryset(self):
+        return WorkoutLog.object.all()
