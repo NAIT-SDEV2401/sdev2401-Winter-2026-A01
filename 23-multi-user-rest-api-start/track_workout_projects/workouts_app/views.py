@@ -80,6 +80,16 @@ class WorkLogAPIVIew(APIView):
         return WorkoutLog.object.all()
 
     def get(self, request, id=None):
+        # detail view
+        if id:
+            workout_log = get_object_or_404(WorkoutLog, id=id)
+            # remember folks this is the same as
+            # workout_log = WorkoutLog.objects.get(id=id) with a 404
+            serializer = self.get_serializer_class()(workout_log)
+            # self.get_serializer_class() returns a ref to the
+            # the serializer class.
+            # above we are initializing the class with our model instance
+            return Response(serializer.data)
         # list view
         # let's get themfrom the db.
         workout_logs = self.get_queryset()
@@ -87,6 +97,7 @@ class WorkLogAPIVIew(APIView):
         # self.get_serializer_class() returns
         # WorkoutLogReadOnlySerializer
         serializer = self.get_serializer_class()(
-            workout_logs, many=True  # queryset (many items from the db)
+            workout_logs,
+            many=True,  # queryset (many items from the db)
         )
         return Response(serializer.data)
