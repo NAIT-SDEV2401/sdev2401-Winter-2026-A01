@@ -20,4 +20,9 @@ class IsOwnerOfResourceOrReadOnly(IsAuthenticated):
         if request.method in ("GET", "HEAD", "OPTIONS"):
             return True
 
-        return
+        # if it hits this area you can see that's it's a PUT/POST/PATCH request
+        # that will be modifying the items.
+        return obj.user == request.user
+        # Note 1: object is used from detail that will be passed in (ensure "user" is on the model)
+        # Note 2: remember that the request.user will be the user based on the token that was
+        # passed in the header
