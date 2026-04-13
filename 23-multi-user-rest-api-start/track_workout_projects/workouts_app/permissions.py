@@ -17,7 +17,7 @@ class IsOwnerOfResourceOrReadOnly(BasePermission):
     # this returns a boolean whether they have permission or not.
     # in an apiview check_object_permission needs to be called for this to be run.
     def has_object_permission(self, request, view, obj):
-        breakpoint()
+
         # Read permissions on any request.
         if request.method in ("GET", "HEAD", "OPTIONS"):
             return True

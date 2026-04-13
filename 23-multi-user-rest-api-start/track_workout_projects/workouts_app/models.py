@@ -33,6 +33,8 @@ class WorkoutLog(models.Model):
     """Tracking specific performance for an exercise in a workout"""
 
     # add the user
+    # all I want to do is essentially make it so that only the user can
+    # modify a workout.
     user = models.ForeignKey(
         settings.AUTH_USER_MODEL,
         on_delete=models.SET_NULL,
